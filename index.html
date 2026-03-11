@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="it" data-theme="dark">
+
+<head>
+  <meta content="Alessio Alaimo" name="author" />
+  <meta content="Alessio Alaimo 2026" name="copyright" />
+  <meta content="Alessio Alaimo | Data Analyst Portfolio" property="og:title" />
+  <meta content="Esplora la mia visione sull'AI e il mio percorso nel mondo dei dati." property="og:description" />
+  <meta content="https://alessio-alaimo.github.io/anteprima-sito.png" property="og:image" />
+  <meta content="website" property="og:type" />
+  <meta content="summary_large_image" name="twitter:card" />
+  <title>Alessio Alaimo | AI &amp; Data Analyst</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" />
+  <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60" />
+  <link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72" />
+  <link href="/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+  <link href="/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114" />
+  <link href="/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+  <link href="/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144" />
+  <link href="/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+  <link href="/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+  <link href="/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png" />
+  <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+  <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+  <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+  <link href="/manifest.json" rel="manifest" />
+  <meta content="#ffffff" name="msapplication-TileColor" />
+  <meta content="/ms-icon-144x144.png" name="msapplication-TileImage" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link href="style.css?v=86" rel="stylesheet" />
+  <!-- Removed external FontAwesome dependency for better stability -->
+</head>
+
+<body>
+  <!-- Organic Roots Background Canvas -->
+  <canvas class="roots-background" id="roots-canvas"></canvas>
+  <!-- Cyber Grid Background -->
+  <div class="cyber-grid-container">
+    <div class="cyber-grid"></div>
+  </div>
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="index.html" style="text-decoration:none;">
+          <span class="nav-logo-text">Alessio Alaimo</span>
+        </a>
+      </div>
+      <div class="nav-menu" id="navMenu">
+        <a class="nav-link" data-en="Tech Stack" data-it="Tech Stack" href="#techstack">Tech Stack</a>
+        <a class="nav-link" data-en="Projects" data-it="Progetti" href="#projects">Progetti</a>
+        <a class="nav-link" data-en="Contact" data-it="Contatti" href="#contact">Contatti</a>
+      </div>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
+            style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+          <span class="lang-flag" title="Switch to English">🇮🇹</span>
+        </button>
+
+        <button aria-label="Toggle menu" class="mobile-menu-toggle" id="menuToggle">
+          <span class="hamburger"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content-wrapper hero-layout-b">
+        <!-- BIG HEADER BACKGROUND TEXT -->
+        <div class="hero-bg-text" aria-hidden="true">
+          <span class="first-name">ALESSIO</span>
+          <span class="Outline">ALAIMO</span>
+        </div>
+
+        <div class="hero-interactive">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              <span class="role-wrapper" style="margin-top:0;">
+                <span class="role-text" id="typing-text"></span>
+                <span class="cursor">|</span>
+              </span>
+            </h1>
+            <p class="hero-description"
+              data-en="Building the backend infrastructure of digital products. Specializing in Data Engineering (Python, SQL, Linux) and advanced AI model integration."
+              data-it="Costruisco l'infrastruttura backend dei prodotti digitali. Unisco la solidità del Data Engineering (Python, SQL, Linux) all'integrazione di sistemi AI avanzati.">
+              Costruisco l'infrastruttura backend dei prodotti digitali. Unisco la solidità del Data Engineering
+              (Python, SQL, Linux) all'integrazione di sistemi AI avanzati.</p>
+
+          </div>
+
+          <div class="hero-image">
+            <img alt="Alessio Alaimo" class="profile-image" src="profile-photo.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="cyber-scroll-arrow">
+        <svg fill="none" height="32" viewBox="0 0 24 24" width="32" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="7 13 12 18 17 13" class="arrow-bottom"></polyline>
+          <polyline points="7 6 12 11 17 6" class="arrow-top"></polyline>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <!-- About Section REMOVED: Moving to radical tech minimalism -->
+  <!-- Tech Stack Section (Replacing verbose "Cosa posso fare per te") -->
+  <section class="tech-stack" id="techstack">
+    <div class="container">
+      <div class="minimal-header">
+        <span class="minimal-bar"></span>
+        <h2 class="minimal-title" data-en="Tech Stack" data-it="Tech Stack">Tech Stack</h2>
+      </div>
+      <div class="bento-grid">
+        <!-- Backend & DB -->
+        <div class="bento-card reveal">
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+          </div>
+          <h3 class="bento-title" data-en="Backend & DB (PostgreSQL, Supabase)"
+            data-it="Backend & DB (PostgreSQL, Supabase)">Backend & DB (PostgreSQL, Supabase)</h3>
+        </div>
+        <!-- Scripting -->
+        <div class="bento-card reveal">
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+              <path d="M12 8h.01"></path>
+              <path d="M9.5 10c.5-1.5 2-2.5 2.5-2.5s2 .5 2.5 2.5"></path>
+            </svg>
+          </div>
+          <h3 class="bento-title" data-en="Data & Scripting (Python, FastAPI)"
+            data-it="Data & Scripting (Python, FastAPI)">Data & Scripting (Python, FastAPI)</h3>
+        </div>
+        <!-- Linux & Infra -->
+        <div class="bento-card reveal">
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 11l2 2 4-4"></path>
+              <path d="M9 11l-2 2-4-4"></path>
+              <rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect>
+              <line x1="8" x2="16" y1="21" y2="21"></line>
+            </svg>
+          </div>
+          <h3 class="bento-title" data-en="Infrastructure (Linux, Docker, WebSockets)"
+            data-it="Infrastructure (Linux, Docker, WebSockets)">Infrastructure (Linux, Docker, WebSockets)</h3>
+        </div>
+        <!-- AI Integrations -->
+        <div class="bento-card reveal">
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+              </path>
+            </svg>
+          </div>
+          <h3 class="bento-title" data-en="AI Integrations (n8n, Stable Diffusion)"
+            data-it="AI Integrations (n8n, Stable Diffusion)">AI Integrations (n8n, Stable Diffusion)</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Featured Projects Section (Minimal OLED Style) -->
+  <section class="featured-projects" id="projects">
+    <div class="container">
+      <div class="minimal-header">
+        <span class="minimal-bar"></span>
+        <h2 class="minimal-title" data-en="Featured Projects" data-it="Progetti in Evidenza">Progetti in Evidenza</h2>
+      </div>
+
+      <div class="projects-oled-grid">
+        <!-- Project 1 AI -->
+        <a href="https://github.com/lmalss" target="_blank" class="project-oled-card reveal">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">AI Content System</h3>
+            <p class="project-oled-desc"
+              data-en="Event-driven system for AI content generation. Asynchronous FastAPI bridge linking cloud orchestrator (n8n) with local GPU, validated by Claude Vision."
+              data-it="Bridge asincrono FastAPI tra orchestratore cloud (n8n) e GPU locale. Pipeline di generazione immagini con validation automatica tramite Claude Vision.">
+              Bridge asincrono FastAPI tra orchestratore cloud (n8n) e GPU locale. Pipeline di generazione immagini con
+              validation automatica tramite Claude Vision.</p>
+            <div class="project-oled-tags">
+              <span>FastAPI</span>
+              <span>n8n</span>
+              <span>Claude Vision</span>
+            </div>
+          </div>
+          <div class="project-oled-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+
+        <!-- Project 2 Security/Backend -->
+        <a href="https://github.com/lmalss" target="_blank" class="project-oled-card reveal"
+          style="transition-delay: 150ms;">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">Secure API & Tracking</h3>
+            <p class="project-oled-desc"
+              data-en="PostgreSQL database management on Supabase with AES-256 encryption for zero-trust API tokens and detailed cost tracking."
+              data-it="Gestione PostgreSQL su Supabase. Crittografia AES-256 per sicurezza zero-trust dei token API e sistema di tracking dei costi.">
+              Gestione PostgreSQL su Supabase. Crittografia AES-256 per sicurezza zero-trust dei token API e sistema di
+              tracking dei costi.</p>
+            <div class="project-oled-tags">
+              <span>Supabase</span>
+              <span>AES-256</span>
+              <span>SQL</span>
+            </div>
+          </div>
+          <div class="project-oled-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+
+        <!-- View All Projects -->
+        <a href="https://github.com/lmalss" target="_blank" class="project-oled-card github-oled-link reveal"
+          style="transition-delay: 300ms;">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">Explore more on GitHub</h3>
+            <p class="project-oled-desc">Visit my repository to view all my scripts, automation tasks, and data
+              exploration notebooks.</p>
+          </div>
+          <div class="project-oled-icon">
+            <svg fill="currentColor" height="48" viewbox="0 0 24 24" width="48">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+              </path>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-wrapper" style="max-width: 1200px;">
+        <div class="minimal-header" style="margin-bottom: 3rem;">
+          <span class="minimal-bar"></span>
+          <h2 class="minimal-title" data-en="Contact" data-it="Contatti">Contatti</h2>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Text/Info part (Left) -->
+          <div class="contact-info">
+            <h3 class="contact-info-title">
+              <span data-en="Let's build" data-it="Costruiamo">Costruiamo</span><br>
+              <span data-en="something" data-it="qualcosa di">qualcosa di</span><br>
+              <span class="contact-highlight" data-en="great." data-it="grande.">grande.</span>
+            </h3>
+            <p class="contact-info-desc"
+              data-en="Reach out if you're looking for a methodical AI & Data Engineer who combines manufacturing precision with digital logic."
+              data-it="Contattami se cerchi un AI & Data Engineer metodico, che unisce la precisione manifatturiera alla logica digitale.">
+              Contattami se cerchi un AI & Data Engineer metodico, che unisce la precisione manifatturiera alla logica
+              digitale.</p>
+
+            <div class="contact-direct-email">
+              <p class="contact-lbl" data-en="DIRECT EMAIL" data-it="EMAIL DIRETTA">EMAIL DIRETTA</p>
+              <a href="mailto:alessioalaimo19@icloud.com" class="contact-mail-link">alessioalaimo19@icloud.com</a>
+            </div>
+
+            <!-- Minimal Social Links positioned under the text on the left -->
+            <div class="social-links-minimal" style="justify-content: flex-start; margin-top: 2rem;">
+              <a href="https://www.linkedin.com/in/alessio-alaimo" target="_blank"
+                class="minimal-social-link">LinkedIn</a>
+              <span class="minimal-social-separator">/</span>
+              <a href="https://github.com/lmalss" target="_blank" class="minimal-social-link">GitHub</a>
+              <span class="minimal-social-separator">/</span>
+              <a class="minimal-social-link" download="" href="CV_Alessio_Alaimo.pdf" data-en="download resume"
+                data-it="scarica cv">CV</a>
+            </div>
+          </div>
+
+          <!-- Contact Form part (Right) -->
+          <div class="contact-form-wrapper" style="width: 100%;">
+            <!-- Contact Form -->
+            <form action="https://api.web3forms.com/submit" class="contact-form" id="contactForm" method="POST">
+              <input type="hidden" name="access_key" value="6947923a-58b7-47fa-adf2-2b1b7a570175" id="web3formsKey">
+              <input type="hidden" name="subject" value="Nuovo Messaggio dal Portfolio">
+              <div class="contact-form-inner">
+                <div class="form-group">
+                  <label data-en="Name" data-it="Nome" for="name">Nome</label>
+                  <input id="name" name="name" placeholder="Il tuo nome" required="" type="text" />
+                </div>
+                <div class="form-group">
+                  <label data-en="Email" data-it="Email" for="email">Email</label>
+                  <input id="email" name="email" placeholder="tua@email.com" required="" type="email" />
+                </div>
+                <div class="form-group">
+                  <label data-en="Subject" data-it="Oggetto" for="subject">Oggetto</label>
+                  <input id="subject" name="subject" placeholder="Oggetto del messaggio" required="" type="text" />
+                </div>
+                <div class="form-group">
+                  <label data-en="Message" data-it="Messaggio" for="message">Messaggio</label>
+                  <textarea id="message" name="message" placeholder="Scrivi qui il tuo messaggio..." required=""
+                    rows="5"></textarea>
+                </div>
+                <button class="btn btn-primary submit-btn" type="submit">
+                  <span data-en="Send Message" data-it="Invia Messaggio">Invia Messaggio</span>
+                  <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" viewbox="0 0 24 24" width="20">
+                    <line x1="22" x2="11" y1="2" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+                <div id="form-status"
+                  style="display: none; text-align: center; margin-top: 15px; padding: 10px; border-radius: 8px; font-weight: 500;">
+                  <!-- Messages will appear here -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p data-en="© 2026 Alessio Alaimo. All rights reserved."
+          data-it="© 2026 Alessio Alaimo. Tutti i diritti riservati.">
+          © 2026 Alessio Alaimo. Tutti i diritti riservati.
+        </p>
+        <div class="footer-links">
+          <a data-en="Privacy Policy" data-it="Privacy Policy" href="privacy-policy.html">Privacy Policy</a>
+          <span>•</span>
+          <a data-en="Cookie Policy" data-it="Cookie Policy" href="cookie-policy.html">Cookie Policy</a>
+        </div>
+        <p class="footer-location">
+          <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" style="
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 4px;
+              " viewbox="0 0 24 24" width="16">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Rovigo, Italia
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop">
+    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      viewbox="0 0 24 24" width="24">
+      <path d="M18 15l-6-6-6 6"></path>
+    </svg>
+  </button>
+  <!-- Three.js CDN - required for neural network background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js?v=86"></script>
+</body>
+
+</html>
