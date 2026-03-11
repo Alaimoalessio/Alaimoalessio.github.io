@@ -1643,10 +1643,10 @@ section {
 @media (max-width: 768px) {
   /* UI/UX: Dynamic spacing scale-down for mobile devices to prevent excessive empty spaces */
   :root {
-    --spacing-xxl: 4rem;
-    --spacing-xl: 3rem;
-    --spacing-lg: 2rem;
-    --spacing-md: 1.5rem;
+    --spacing-xxl: 2rem;  /* Prima era 12rem = ~190px, ora è ~32px */
+    --spacing-xl: 1.5rem; /* ~24px */
+    --spacing-lg: 1.25rem;/* ~20px */
+    --spacing-md: 0.75rem;/* ~12px */
   }
 
   /* .nav-menu display handled by hamburger logic above */
