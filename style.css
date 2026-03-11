@@ -44,7 +44,7 @@
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
-  --spacing-xxl: 12rem;
+  /* Note: --spacing-xxl is defined only inside @media mobile to avoid bloating desktop */
 
   --border-radius-sm: 6px;
   --border-radius-md: 8px;
@@ -1019,7 +1019,7 @@ section {
 .tech-stack {
   position: relative;
   z-index: 1;
-  padding: var(--spacing-xxl) 0;
+  padding: 6rem 0; /* Desktop: sensato e calibrato. Mobile: overridden via @media */
   background: transparent;
 }
 
@@ -1108,7 +1108,7 @@ section {
 .featured-projects {
   position: relative;
   z-index: 1;
-  padding: var(--spacing-xxl) 0;
+  padding: 6rem 0; /* Desktop: sensato e calibrato. Mobile: overridden via @media */
   background: transparent;
 }
 
@@ -1643,10 +1643,15 @@ section {
 @media (max-width: 768px) {
   /* UI/UX: Dynamic spacing scale-down for mobile devices to prevent excessive empty spaces */
   :root {
-    --spacing-xxl: 2rem;  /* Prima era 12rem = ~190px, ora è ~32px */
-    --spacing-xl: 1.5rem; /* ~24px */
-    --spacing-lg: 1.25rem;/* ~20px */
-    --spacing-md: 0.75rem;/* ~12px */
+    --spacing-xl: 1.5rem;
+    --spacing-lg: 1.25rem;
+    --spacing-md: 0.75rem;
+  }
+
+  /* Override sezioni con padding fisso desktop */
+  .tech-stack,
+  .featured-projects {
+    padding: 2.5rem 0;
   }
 
   /* .nav-menu display handled by hamburger logic above */
