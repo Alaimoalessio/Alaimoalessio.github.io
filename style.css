@@ -44,6 +44,7 @@
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
+  --spacing-xxl: 12rem;
 
   --border-radius-sm: 6px;
   --border-radius-md: 8px;
@@ -1640,6 +1641,14 @@ section {
 }
 
 @media (max-width: 768px) {
+  /* UI/UX: Dynamic spacing scale-down for mobile devices to prevent excessive empty spaces */
+  :root {
+    --spacing-xxl: 6rem;
+    --spacing-xl: 4rem;
+    --spacing-lg: 2.5rem;
+    --spacing-md: 1.5rem;
+  }
+
   /* .nav-menu display handled by hamburger logic above */
 
   .hero {
@@ -1650,8 +1659,10 @@ section {
 
   /* Specific tweaks for Layout B on mobile */
   .hero-bg-text {
-    opacity: 0.6;
+    opacity: 0.5;
     /* Slight dimming behind text */
+    font-size: clamp(3rem, 18vw, 6rem); 
+    line-height: 1.1;
   }
 
   .profile-image {
@@ -1705,6 +1716,23 @@ section {
   .soft-skills-grid,
   .why-me-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Fix UI issue: Project cards horizontal squish on mobile */
+  .project-oled-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-md);
+  }
+
+  .project-oled-link {
+    margin-left: 0;
+    margin-top: var(--spacing-sm);
+    align-self: flex-end;
+  }
+
+  .project-oled-tags {
+    margin-bottom: var(--spacing-xs);
   }
 
   .contact-layout {
