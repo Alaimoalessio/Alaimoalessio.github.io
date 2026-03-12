@@ -78,9 +78,9 @@
   --surface-glass-border: rgba(0, 0, 0, 0.08);
   --border-color: rgba(0, 0, 0, 0.08);
   --accent-primary: #09090b;
-  --accent-secondary: #ffb703;
-  /* Bright tech yellow */
-  --accent-gradient: linear-gradient(135deg, #fb8500, #ffb703);
+  --accent-secondary: #0ea5e9;
+  /* Sky blue */
+  --accent-gradient: linear-gradient(135deg, #2563eb, #0ea5e9);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
@@ -1952,22 +1952,22 @@ section {
 
 /* --- LIGHT THEME OVERRIDES --- */
 [data-theme="light"] .cursor {
-  color: #ffb703;
+  color: #0ea5e9;
 }
 
 [data-theme="light"] .minimal-bar {
-  background: #ffb703;
+  background: #0ea5e9;
 }
 
 [data-theme="light"] .contact-form {
   background: radial-gradient(350px circle at var(--mouse-x-form, 50%) var(--mouse-y-form, 50%),
-      rgba(255, 183, 3, 0.8) 0%,
-      rgba(255, 183, 3, 0) 100%);
+      rgba(14, 165, 233, 0.8) 0%,
+      rgba(14, 165, 233, 0) 100%);
 }
 
 [data-theme="light"] .minimal-social-link:hover {
-  color: #ffb703;
-  text-shadow: 0 0 10px rgba(255, 183, 3, 0.4);
+  color: #0ea5e9;
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.4);
 }
 
 [data-theme="light"] .contact-form-inner {
@@ -1990,8 +1990,8 @@ section {
 
 [data-theme="light"] .btn-primary:hover {
   background: rgba(255, 255, 255, 1);
-  border-color: rgba(255, 183, 3, 0.5);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 183, 3, 0.1);
+  border-color: rgba(14, 165, 233, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(14, 165, 233, 0.1);
 }
 
 [data-theme="light"] .nav-menu {
@@ -2009,7 +2009,7 @@ section {
 
 [data-theme="light"] .project-oled-card:hover {
   background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(255, 183, 3, 0.4);
+  border-color: rgba(14, 165, 233, 0.4);
 }
 
 [data-theme="light"] .project-oled-tags span {
@@ -2019,12 +2019,12 @@ section {
 
 [data-theme="light"] .project-oled-card:hover .project-oled-title {
   text-shadow: none;
-  color: #ffb703;
+  color: #0ea5e9;
 }
 
 [data-theme="light"] .project-oled-card:hover .project-oled-link {
   filter: none;
-  color: #ffb703;
+  color: #0ea5e9;
 }
 
 [data-theme="light"] .bento-card {
@@ -2033,7 +2033,7 @@ section {
 }
 
 [data-theme="light"] .bento-card:hover {
-  border-color: rgba(255, 183, 3, 0.4);
+  border-color: rgba(14, 165, 233, 0.4);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -2043,18 +2043,18 @@ section {
 }
 
 [data-theme="light"] .hero-bg-text .first-name {
-  -webkit-text-stroke: 2px rgba(255, 183, 3, 0.4);
+  -webkit-text-stroke: 2px rgba(14, 165, 233, 0.4);
 }
 
 [data-theme="light"] .hero-bg-text .Outline {
-  background: linear-gradient(to bottom, rgba(255, 183, 3, 0.5), transparent);
+  background: linear-gradient(to bottom, rgba(14, 165, 233, 0.5), transparent);
   -webkit-background-clip: text;
   background-clip: text;
 }
 
 [data-theme="light"] .contact-mail-link:hover {
   text-shadow: none;
-  color: #ffb703;
+  color: #0ea5e9;
 }
 
 [data-theme="light"] .minimal-social-separator {
@@ -2066,11 +2066,11 @@ section {
 }
 
 [data-theme="light"] .bento-icon {
-  color: #ffb703;
+  color: #0ea5e9;
 }
 
 [data-theme="light"] .bento-card:hover .bento-icon {
-  color: #ffb703;
+  color: #0ea5e9;
 }
 
 [data-theme="light"] .theme-toggle,

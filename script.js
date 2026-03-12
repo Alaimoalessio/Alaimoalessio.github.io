@@ -666,8 +666,8 @@ function initProceduralCubesBackground() {
         vec2 xy = gl_PointCoord.xy - vec2(0.5);
         float ll = length(xy);
         if(ll > 0.5) discard;
-        // Colori arancione vivido (#fb8500) usato nelle scritte animate per Light mode
-        vec3 lightColorBase = vec3(0.984, 0.521, 0.0);
+        // Colori azzurro/blu (#0ea5e9 light, #2563eb dark basis) per Light mode
+        vec3 lightColorBase = vec3(0.055, 0.647, 0.914);
         vec3 cColor = mix(lightColorBase, vColorBase, isDarkTheme);
         
         // Luminosità
@@ -764,12 +764,12 @@ function initProceduralCubesBackground() {
       void main() {
         float wave = sin(vDist * 0.015 - time * 3.0);
         float pulse = smoothstep(0.85, 1.0, wave);
-        // Light mode: arancione testuale (#fb8500) come base, impulsi giallo tech (#ffb703)
+        // Light mode: azzurro (#0ea5e9) come base, impulsi blu (#2563eb)
         // Dark mode: bright orange with glow
-        vec3 baseColor = mix(vec3(0.984, 0.521, 0.0), vec3(0.9, 0.2, 0.0), isDarkTheme);
-        vec3 pulseColor = mix(vec3(1.0, 0.717, 0.0), vec3(1.0, 0.5, 0.0), isDarkTheme);
+        vec3 baseColor = mix(vec3(0.055, 0.647, 0.914), vec3(0.9, 0.2, 0.0), isDarkTheme);
+        vec3 pulseColor = mix(vec3(0.145, 0.388, 0.922), vec3(1.0, 0.5, 0.0), isDarkTheme);
         
-        float finalAlpha = vAlpha * mix(0.7, 0.4, isDarkTheme); // Opacità calibrata per il nuovo arancione
+        float finalAlpha = vAlpha * mix(0.7, 0.4, isDarkTheme); // Opacità calibrata
         float finalPulse = finalAlpha + (pulse * vAlpha * mix(0.9, 1.0, isDarkTheme));
         
         vec3 colorFinal = mix(baseColor, pulseColor, pulse);
