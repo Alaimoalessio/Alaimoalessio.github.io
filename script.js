@@ -1,227 +1,202 @@
-/*!
- * (c) 2026 Alessio Alaimo
- * Role: Data Analyst
- * Tutela legale: All Rights Reserved. Plagiarism is strictly prohibited.
- */
+// Variabili per salvare lingua e tema
+let lingua = "it";
+let tema = "dark";
 
-// ===== STATE MANAGEMENT =====
-let currentLang = "it";
-let currentTheme = "dark";
+// Funzione per il menu sul telefono
+function gestisci_menu() {
+  const bottone = document.getElementById("menuToggle");
+  const menu = document.getElementById("navMenu");
+  const link = document.querySelectorAll(".nav-link");
 
-// ===== INIT =====
-// Mobile Menu Toggle Logic
-const createMobileMenu = () => {
-  const menuToggle = document.getElementById("menuToggle");
-  const navMenu = document.getElementById("navMenu");
-  const navLinks = document.querySelectorAll(".nav-link");
+  if (!bottone || !menu) return;
 
-  if (!menuToggle || !navMenu) return;
-
-  menuToggle.addEventListener("click", () => {
-    menuToggle.classList.toggle("active");
-    navMenu.classList.toggle("active");
+  bottone.addEventListener("click", function () {
+    bottone.classList.toggle("active");
+    menu.classList.toggle("active");
     document.body.classList.toggle("menu-open");
   });
 
-  // Close menu when a link is clicked
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      menuToggle.classList.remove("active");
-      navMenu.classList.remove("active");
+  // Chiude il menu quando clicco un link
+  link.forEach(function (l) {
+    l.addEventListener("click", function () {
+      bottone.classList.remove("active");
+      menu.classList.remove("active");
       document.body.classList.remove("menu-open");
     });
   });
-};
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-  // 1. Initial State & UI Core
-  initTheme();
-  initLanguage();
-  createMobileMenu();
+// Quando la pagina e' pronta faccio partire tutto
+document.addEventListener("DOMContentLoaded", function () {
+  // Avvio le cose base
+  imposta_tema_iniziale();
+  imposta_lingua_iniziale();
+  gestisci_menu();
 
-  // 2. Background Layers
-  initProceduralCubesBackground();
+  // Avvio lo sfondo figo con i cubi/radici
+  fai_sfondo();
 
-  // 3. Page components
-  initNavbar();
-  initBackToTop();
-  initScrollAnimations();
-
-  // 4. Interactive & Visual Effects
-  initSmoothScroll();
-  initWaveHandGreeting();
-  initTypingEffect();
-  initMouseTracking(); // Handles spotlight form too
-  initContactWink();
-  initContactForm(); // <-- Aggiunto
+  // Avvio le altre funzioni del sito
+  barra_sopra();
+  bottone_torna_su();
+  animazioni_scorrimento();
+  scroll_morbido();
+  saluto_mano();
+  scritta_che_appare();
+  mouse_che_segue();
+  occhiolino_foto();
+  invio_messaggio();
 });
 
-// ===== CONTACT WINK EFFECT =====
-function initContactWink() {
-  const photo = document.getElementById("contact-photo");
-  if (!photo) return;
+// Funzione per far fare l'occhiolino alla foto
+function occhiolino_foto() {
+  const immagine = document.getElementById("contact-photo");
+  if (!immagine) return;
 
-  const originalSrc = "profile-photo.png";
-  const winkSrc = "profile-photo-wink.png";
+  const normale = "profile-photo.png";
+  const occhiolino = "profile-photo-wink.png";
 
-  // Preload wink image
-  const preloadImg = new Image();
-  preloadImg.src = winkSrc;
+  // Carico l'immagine dell'occhiolino prima cosi non scatta
+  const precarica = new Image();
+  precarica.src = occhiolino;
 
-  // Hover effect
-  photo.addEventListener("mouseenter", () => {
-    photo.src = winkSrc;
+  // Quando ci passo sopra col mouse
+  immagine.addEventListener("mouseenter", function () {
+    immagine.src = occhiolino;
   });
 
-  photo.addEventListener("mouseleave", () => {
-    photo.src = originalSrc;
+  immagine.addEventListener("mouseleave", function () {
+    immagine.src = normale;
   });
 
-  // Auto-wink every 8 seconds
-  setInterval(() => {
-    // Only if not currently hovering
-    if (!photo.matches(":hover")) {
-      photo.src = winkSrc;
-      setTimeout(() => {
-        photo.src = originalSrc;
-      }, 300); // Quick wink duration
+  // Ne fa uno da solo ogni 8 secondi
+  setInterval(function () {
+    if (!immagine.matches(":hover")) {
+      immagine.src = occhiolino;
+      setTimeout(function () {
+        immagine.src = normale;
+      }, 300);
     }
   }, 8000);
 }
 
-// ===== MOUSE TRACKING =====
-function initMouseTracking() {
-  const contactForm = document.querySelector(".contact-form");
-  const profileImage = document.querySelector(".hero .profile-image");
-  let rafId = null;
+// Funzione per far seguire il mouse ad alcuni elementi
+function mouse_che_segue() {
+  const form_contatto = document.querySelector(".contact-form");
+  const foto_profilo = document.querySelector(".hero .profile-image");
+  let frame = null;
 
-  document.addEventListener("mousemove", (e) => {
-    if (rafId) cancelAnimationFrame(rafId);
+  document.addEventListener("mousemove", function (e) {
+    if (frame) cancelAnimationFrame(frame);
 
-    rafId = requestAnimationFrame(() => {
-      // Global mouse tracking (for effects)
+    frame = requestAnimationFrame(function () {
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
 
       document.documentElement.style.setProperty("--mouse-x", x);
       document.documentElement.style.setProperty("--mouse-y", y);
 
-      // Specific tracking for contact form spotlight
-      if (contactForm) {
-        const rect = contactForm.getBoundingClientRect();
-        const formX = e.clientX - rect.left;
-        const formY = e.clientY - rect.top;
-        contactForm.style.setProperty("--mouse-x-form", `${formX}px`);
-        contactForm.style.setProperty("--mouse-y-form", `${formY}px`);
+      if (form_contatto) {
+        const bordo = form_contatto.getBoundingClientRect();
+        const fx = e.clientX - bordo.left;
+        const fy = e.clientY - bordo.top;
+        form_contatto.style.setProperty("--mouse-x-form", fx + "px");
+        form_contatto.style.setProperty("--mouse-y-form", fy + "px");
       }
 
-      // Holo-Tilt 3D Effect for Profile Image
-      if (profileImage) {
-        const rect = profileImage.getBoundingClientRect();
-        // Check if cursor is over or near the image
-        const isHovering = (
-          e.clientX >= rect.left && e.clientX <= rect.right &&
-          e.clientY >= rect.top && e.clientY <= rect.bottom
-        );
+      // Effetto 3D sulla foto
+      if (foto_profilo) {
+        const bordo_foto = foto_profilo.getBoundingClientRect();
+        const sopra = (e.clientX >= bordo_foto.left && e.clientX <= bordo_foto.right &&
+          e.clientY >= bordo_foto.top && e.clientY <= bordo_foto.bottom);
 
-        if (isHovering) {
-          // Calculate mouse position relative to image center
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-          const mouseX = e.clientX - centerX;
-          const mouseY = e.clientY - centerY;
+        if (sopra) {
+          const centroX = bordo_foto.left + bordo_foto.width / 2;
+          const centroY = bordo_foto.top + bordo_foto.height / 2;
+          const mx = e.clientX - centroX;
+          const my = e.clientY - centroY;
 
-          // Max rotation angles (e.g. 5 degrees for a subtle effect)
-          const rotateX = ((mouseY / (rect.height / 2)) * -5).toFixed(2);
-          const rotateY = ((mouseX / (rect.width / 2)) * 5).toFixed(2);
+          const rotX = ((my / (bordo_foto.height / 2)) * -5).toFixed(2);
+          const rotY = ((mx / (bordo_foto.width / 2)) * 5).toFixed(2);
 
-          // Apply transform using CSS variables or inline styles
-          profileImage.style.transform = `scale(1.02) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          foto_profilo.style.transform = "scale(1.02) perspective(1000px) rotateX(" + rotX + "deg) rotateY(" + rotY + "deg)";
         } else {
-          profileImage.style.transform = `scale(1) perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+          foto_profilo.style.transform = "scale(1) perspective(1000px) rotateX(0deg) rotateY(0deg)";
         }
       }
     });
   });
 }
 
-// ===== CONTACT FORM =====
-function initContactForm() {
+// Gestione del form dei contatti
+function invio_messaggio() {
   const form = document.getElementById('contactForm');
-  const result = document.getElementById('form-status');
+  const stato = document.getElementById('form-status');
 
-  if (!form || !result) return;
+  if (!form || !stato) return;
 
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
-    
-    // Check if the user has replaced the placeholder key
-    const accessKeyInput = document.getElementById('web3formsKey');
-    if(accessKeyInput && accessKeyInput.value === "INSERISCI_QUI_LA_TUA_CHIAVE") {
-      result.style.display = "block";
-      result.style.backgroundColor = "rgba(255, 102, 0, 0.1)"; // Warning color
-      result.style.color = "var(--accent-secondary)";
-      result.style.border = "1px solid var(--accent-secondary)";
-      
-      const lang = localStorage.getItem("lang") || "it";
-      if(lang === "en") {
-        result.innerHTML = "⚠️ Configuration error: Please insert your Web3Forms Access Key in index.html";
+
+    const input_chiave = document.getElementById('web3formsKey');
+    if (input_chiave && input_chiave.value === "INSERISCI_QUI_LA_TUA_CHIAVE") {
+      stato.style.display = "block";
+      stato.style.color = "var(--accent-secondary)";
+
+      const l = localStorage.getItem("lang") || "it";
+      if (l === "en") {
+        stato.innerHTML = "⚠️ Configuration error: Please insert your Web3Forms Access Key in index.html";
       } else {
-        result.innerHTML = "⚠️ Errore configurazione: Inserisci la tua Access Key di Web3Forms in index.html";
+        stato.innerHTML = "⚠️ Errore configurazione: Inserisci la tua Access Key di Web3Forms in index.html";
       }
       return;
     }
 
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    const dati = new FormData(form);
+    const ogg = Object.fromEntries(dati);
+    const corpo = JSON.stringify(ogg);
 
-    const lang = localStorage.getItem("lang") || "it";
-    result.style.display = "block";
-    result.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-    result.style.color = "var(--text-secondary)";
-    result.style.border = "none";
-    result.innerHTML = lang === "it" ? "Invio in corso..." : "Sending...";
+    const l = localStorage.getItem("lang") || "it";
+    stato.style.display = "block";
+    stato.innerHTML = l === "it" ? "Invio in corso..." : "Sending...";
 
     fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: json
-        })
-        .then(async (response) => {
-            let json = await response.json();
-            if (response.status == 200) {
-                result.style.color = "var(--accent-tertiary)"; // Success green
-                result.style.backgroundColor = "rgba(16, 185, 129, 0.1)";
-                result.innerHTML = lang === "it" ? "✅ Messaggio inviato con successo!" : "✅ Message sent successfully!";
-            } else {
-                console.log(response);
-                result.style.color = "#ff4444"; // Error red
-                result.innerHTML = json.message;
-            }
-        })
-        .catch(error => {
-            console.log(error);
-            result.style.color = "#ff4444";
-            result.innerHTML = lang === "it" ? "❌ Qualcosa è andato storto. Riprova." : "❌ Something went wrong. Try again.";
-        })
-        .then(function() {
-            form.reset();
-            setTimeout(() => {
-                result.style.display = "none";
-            }, 5000);
-        });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: corpo
+    })
+      .then(async function (risposta) {
+        let ris_json = await risposta.json();
+        if (risposta.status == 200) {
+          stato.style.color = "var(--accent-tertiary)";
+          stato.innerHTML = l === "it" ? "✅ Messaggio inviato con successo!" : "✅ Message sent successfully!";
+        } else {
+          stato.style.color = "#ff4444";
+          stato.innerHTML = ris_json.message;
+        }
+      })
+      .catch(function (err) {
+        stato.style.color = "#ff4444";
+        stato.innerHTML = l === "it" ? "❌ Qualcosa è andato storto. Riprova." : "❌ Something went wrong. Try again.";
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(function () {
+          stato.style.display = "none";
+        }, 5000);
+      });
   });
 }
-// ===== TYPING EFFECT =====
-function initTypingEffect() {
-  const typingElement = document.getElementById("typing-text");
-  if (!typingElement) return;
 
-  const roles = [
+// Effetto della scritta che si scrive da sola
+function scritta_che_appare() {
+  const el = document.getElementById("typing-text");
+  if (!el) return;
+
+  const ruoli = [
     { it: "AI & Data Engineer", en: "AI & Data Engineer" },
     { it: "Backend Developer", en: "Backend Developer" },
     { it: "Database Strategist", en: "Database Strategist" },
@@ -229,174 +204,156 @@ function initTypingEffect() {
     { it: "Infrastructure Builder", en: "Infrastructure Builder" }
   ];
 
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typeSpeed = 100;
+  let r_ind = 0;
+  let c_ind = 0;
+  let cancella = false;
+  let vel = 100;
 
-  function type() {
-    // Get current role based on language
-    const currentLang = localStorage.getItem("lang") || "it";
-    const currentRole = roles[roleIndex][currentLang];
+  function scrive() {
+    const l = localStorage.getItem("lang") || "it";
+    const r_attuale = ruoli[r_ind][l];
 
-    if (isDeleting) {
-      typingElement.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
-      typeSpeed = 50; // Speed up when deleting
+    if (cancella) {
+      el.textContent = r_attuale.substring(0, c_ind - 1);
+      c_ind--;
+      vel = 50;
     } else {
-      typingElement.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
-      typeSpeed = 100; // Normal typing speed
+      el.textContent = r_attuale.substring(0, c_ind + 1);
+      c_ind++;
+      vel = 100;
     }
 
-    if (!isDeleting && charIndex === currentRole.length) {
-      // Finished typing word
-      isDeleting = true;
-      typeSpeed = 2000; // Pause before deleting
-    } else if (isDeleting && charIndex === 0) {
-      // Finished deleting word
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      typeSpeed = 500; // Pause before typing next word
+    if (!cancella && c_ind === r_attuale.length) {
+      cancella = true;
+      vel = 2000;
+    } else if (cancella && c_ind === 0) {
+      cancella = false;
+      r_ind = (r_ind + 1) % ruoli.length;
+      vel = 500;
     }
 
-    setTimeout(type, typeSpeed);
+    setTimeout(scrive, vel);
   }
 
-  type();
+  scrive();
 }
 
-// ===== LANGUAGE TOGGLE =====
-function initLanguage() {
-  const langToggle = document.getElementById("langToggle");
-  const savedLang = localStorage.getItem("lang") || "it";
+// Funzioni per cambiare lingua
+function imposta_lingua_iniziale() {
+  const bottone_lingua = document.getElementById("langToggle");
+  const salvata = localStorage.getItem("lang") || "it";
 
-  setLanguage(savedLang);
+  cambia_lingua(salvata);
 
-  if (langToggle) {
-    langToggle.addEventListener("click", () => {
-      const newLang = currentLang === "it" ? "en" : "it";
-      setLanguage(newLang);
+  if (bottone_lingua) {
+    bottone_lingua.addEventListener("click", function () {
+      const n = lingua === "it" ? "en" : "it";
+      cambia_lingua(n);
     });
   }
 }
 
-function setLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem("lang", lang);
-  document.documentElement.lang = lang;
+function cambia_lingua(l) {
+  lingua = l;
+  localStorage.setItem("lang", l);
+  document.documentElement.lang = l;
 
-  const langToggle = document.getElementById("langToggle");
-  if (langToggle) {
-    const flagSpan = langToggle.querySelector(".lang-flag");
-    if (flagSpan) {
-      if (lang === "en") {
-        flagSpan.textContent = "🇬🇧";
-        flagSpan.title = "Passa all'Italiano";
+  const b = document.getElementById("langToggle");
+  if (b) {
+    const bandiera = b.querySelector(".lang-flag");
+    if (bandiera) {
+      if (l === "en") {
+        bandiera.textContent = "🇬🇧";
+        bandiera.title = "Passa all'Italiano";
       } else {
-        flagSpan.textContent = "🇮🇹";
-        flagSpan.title = "Switch to English";
+        bandiera.textContent = "🇮🇹";
+        bandiera.title = "Switch to English";
       }
     }
   }
 
-  // Update elements with data-en/data-it attributes
-  document.querySelectorAll("[data-en][data-it]").forEach((el) => {
-    el.innerHTML = el.getAttribute(`data-${lang}`);
+  document.querySelectorAll("[data-en][data-it]").forEach(function (el) {
+    el.innerHTML = el.getAttribute("data-" + l);
   });
 
-  // Update wave hand greeting if it exists
-  if (typeof updateWaveHandGreeting === "function") {
-    updateWaveHandGreeting();
-  }
+  aggiorna_saluto();
 }
 
-// ===== THEME TOGGLE =====
-function initTheme() {
-  const themeToggle = document.getElementById("themeToggle");
-  const savedTheme = localStorage.getItem("theme") || "dark";
+// Funzioni per cambiare tema (chiaro/scuro)
+function imposta_tema_iniziale() {
+  const bottone_tema = document.getElementById("themeToggle");
+  const salvato = localStorage.getItem("theme") || "dark";
 
-  setTheme(savedTheme);
+  cambia_tema(salvato);
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      setTheme(newTheme);
-      // Neural network updates itself via MutationObserver inside initProceduralCubesBackground
+  if (bottone_tema) {
+    bottone_tema.addEventListener("click", function () {
+      const n = tema === "dark" ? "light" : "dark";
+      cambia_tema(n);
     });
   }
 }
 
-function setTheme(theme) {
-  currentTheme = theme;
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
+function cambia_tema(t) {
+  tema = t;
+  document.documentElement.setAttribute("data-theme", t);
+  localStorage.setItem("theme", t);
 
-  const themeToggle = document.getElementById("themeToggle");
-  if (themeToggle) {
-    const sunIcon = themeToggle.querySelector(".sun-icon");
-    const moonIcon = themeToggle.querySelector(".moon-icon");
+  const b = document.getElementById("themeToggle");
+  if (b) {
+    const sole = b.querySelector(".sun-icon");
+    const luna = b.querySelector(".moon-icon");
 
-    // In light mode we show the moon (to switch to dark)
-    if (theme === "light") {
-      if (sunIcon) sunIcon.style.display = "none";
-      if (moonIcon) moonIcon.style.display = "block";
+    if (t === "light") {
+      if (sole) sole.style.display = "none";
+      if (luna) luna.style.display = "block";
     } else {
-      // In dark mode we show the sun (to switch to light)
-      if (sunIcon) sunIcon.style.display = "block";
-      if (moonIcon) moonIcon.style.display = "none";
+      if (sole) sole.style.display = "block";
+      if (luna) luna.style.display = "none";
     }
   }
 }
 
-// ===== WAVE HAND GREETING =====
-function initWaveHandGreeting() {
-  const waveHand = document.querySelector(".wave-hand");
-  if (waveHand) {
-    updateWaveHandGreeting();
+// Funzione per il saluto con la mano
+function saluto_mano() {
+  const mano = document.querySelector(".wave-hand");
+  if (mano) {
+    aggiorna_saluto();
   }
 }
 
-function updateWaveHandGreeting() {
-  const waveHand = document.querySelector(".wave-hand");
-  if (waveHand) {
-    const greeting = currentLang === "it" ? "Ciao!" : "Hi!";
-    waveHand.setAttribute("data-greeting", greeting);
+function aggiorna_saluto() {
+  const mano = document.querySelector(".wave-hand");
+  if (mano) {
+    const s = lingua === "it" ? "Ciao!" : "Hi!";
+    mano.setAttribute("data-greeting", s);
   }
 }
 
-// ===== NAVBAR SCROLL EFFECT =====
-function initNavbar() {
-  const navbar = document.getElementById("navbar");
-  let lastScroll = 0;
-
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    // Add shadow on scroll
-    if (currentScroll > 50) {
-      navbar.classList.add("scrolled");
+// Barra sopra che cambia quando scrollo
+function barra_sopra() {
+  const barra = document.getElementById("navbar");
+  window.addEventListener("scroll", function () {
+    if (window.pageYOffset > 50) {
+      barra.classList.add("scrolled");
     } else {
-      navbar.classList.remove("scrolled");
+      barra.classList.remove("scrolled");
     }
-
-    lastScroll = currentScroll;
   });
 }
 
-// ===== BACK TO TOP BUTTON =====
-function initBackToTop() {
-  const backToTopBtn = document.getElementById("backToTop");
-
-  window.addEventListener("scroll", () => {
+// Bottone per tornare in alto
+function bottone_torna_su() {
+  const b = document.getElementById("backToTop");
+  window.addEventListener("scroll", function () {
     if (window.pageYOffset > 500) {
-      backToTopBtn.classList.add("visible");
+      b.classList.add("visible");
     } else {
-      backToTopBtn.classList.remove("visible");
+      b.classList.remove("visible");
     }
   });
 
-  backToTopBtn.addEventListener("click", () => {
+  b.addEventListener("click", function () {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -404,23 +361,18 @@ function initBackToTop() {
   });
 }
 
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      const href = this.getAttribute("href");
-
-      // Skip if it's just "#"
-      if (href === "#") return;
-
+// Scroll morbido per i link
+function scroll_morbido() {
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      const h = this.getAttribute("href");
+      if (h === "#") return;
       e.preventDefault();
-
-      const target = document.querySelector(href);
-      if (target) {
-        const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-
+      const bersaglio = document.querySelector(h);
+      if (bersaglio) {
+        const dist = bersaglio.offsetTop - 80;
         window.scrollTo({
-          top: offsetTop,
+          top: dist,
           behavior: "smooth",
         });
       }
@@ -428,34 +380,25 @@ function initSmoothScroll() {
   });
 }
 
-// ===== SCROLL ANIMATIONS =====
-function initScrollAnimations() {
-  const observerOptions = {
+// Animazioni quando appaiono gli elementi
+function animazioni_scorrimento() {
+  const opzioni = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+  const observer = new IntersectionObserver(function (voci) {
+    voci.forEach(function (v) {
+      if (v.isIntersecting) {
+        v.target.style.opacity = "1";
+        v.target.style.transform = "translateY(0)";
       }
     });
-  }, observerOptions);
+  }, opzioni);
 
-  // Observe all animated elements
-  const animatedElements = document.querySelectorAll(`
-        .service-card,
-        .skill-category,
-        .soft-skill-card,
-        .project-card,
-        .why-me-card,
-        .highlight-item,
-        .education-card
-    `);
+  const el_animati = document.querySelectorAll(".service-card, .skill-category, .soft-skill-card, .project-card, .why-me-card, .highlight-item, .education-card, .bento-card, .project-oled-card");
 
-  animatedElements.forEach((el) => {
+  el_animati.forEach(function (el) {
     el.style.opacity = "0";
     el.style.transform = "translateY(30px)";
     el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
@@ -463,178 +406,136 @@ function initScrollAnimations() {
   });
 }
 
+// ----- PARTE PER LO SFONDO 3D (THREE.JS) -----
+let stato_sfondo = null;
 
+function pulisci_sfondo() {
+  if (!stato_sfondo) return;
+  const { r_id, b_rend, b_scena, g_geom, g_linee, m_part, m_linee, oss_tema, r_ridimensiona, r_mouse } = stato_sfondo;
 
+  if (r_id) cancelAnimationFrame(r_id);
+  if (oss_tema) oss_tema.disconnect();
+  if (r_ridimensiona) window.removeEventListener('resize', r_ridimensiona);
+  if (r_mouse) document.removeEventListener('mousemove', r_mouse);
 
-
-// ===== DIGITAL BRAIN (NEURAL NETWORK GRAPH VIA THREE.JS) =====
-// Singleton state — only ONE WebGL context ever lives at a time
-let _nnState = null;
-
-function _disposeNeuralNetwork() {
-  if (!_nnState) return;
-  const { rafId, renderer, scene, geometry, linesGeom, particlesMat, linesMat, themeObserver, resizeHandler, mouseMoveHandler, heroObserver } = _nnState;
-
-  // 1. Stop the animation loop
-  if (rafId) cancelAnimationFrame(rafId);
-
-  // 2. Stop observers / listeners
-  if (themeObserver) themeObserver.disconnect();
-  if (resizeHandler) window.removeEventListener('resize', resizeHandler);
-  if (mouseMoveHandler) document.removeEventListener('mousemove', mouseMoveHandler);
-  if (heroObserver) heroObserver.disconnect();
-
-  // 3. Dispose GPU resources
-  if (geometry) geometry.dispose();
-  if (linesGeom) linesGeom.dispose();
-  if (particlesMat) particlesMat.dispose();
-  if (linesMat) linesMat.dispose();
-  if (scene) scene.clear();
-  if (renderer) {
-    renderer.dispose();
-    renderer.forceContextLoss();
-    // Non rimuovere il canvas dal DOM poiché ora è quello nativo
+  if (g_geom) g_geom.dispose();
+  if (g_linee) g_linee.dispose();
+  if (m_part) m_part.dispose();
+  if (m_linee) m_linee.dispose();
+  if (b_scena) b_scena.clear();
+  if (b_rend) {
+    b_rend.dispose();
+    b_rend.forceContextLoss();
   }
-
-  _nnState = null;
+  stato_sfondo = null;
 }
 
-function initProceduralCubesBackground() {
-  // Se esiste già, pulisci prima!
-  _disposeNeuralNetwork();
+function fai_sfondo() {
+  pulisci_sfondo();
 
-  const container = document.getElementById("roots-canvas");
-  if (!container || typeof THREE === "undefined") {
-    console.error("Three.js non caricato o canvas non trovato!");
-    return;
+  const c_sfondo = document.getElementById("roots-canvas");
+  if (!c_sfondo || typeof THREE === "undefined") return;
+
+  c_sfondo.style.display = "block";
+  c_sfondo.style.position = "fixed";
+  c_sfondo.style.top = "0";
+  c_sfondo.style.left = "0";
+  c_sfondo.style.width = "100%";
+  c_sfondo.style.height = "100%";
+  c_sfondo.style.zIndex = "-1";
+  c_sfondo.style.pointerEvents = "none";
+  c_sfondo.style.opacity = "1";
+
+  let luce = document.documentElement.getAttribute('data-theme') === 'light';
+
+  const scena = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
+  cam.position.z = 1000;
+
+  const rend = new THREE.WebGLRenderer({ canvas: c_sfondo, antialias: true, alpha: true });
+  rend.setSize(window.innerWidth, window.innerHeight);
+  rend.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  function colore_pulizia() {
+    rend.setClearColor(0x000000, 0);
   }
+  colore_pulizia();
 
-  // Assicurati che diventi visibile e rimpiazzi la vecchia display:none
-  container.style.display = "block";
-  container.style.position = "fixed";
-  container.style.top = "0";
-  container.style.left = "0";
-  container.style.width = "100%";
-  container.style.height = "100%";
-  container.style.zIndex = "-1";
-  container.style.pointerEvents = "none";
-  container.style.opacity = "1";
+  const tot_nodi = 700;
+  const r_conn = 150;
+  const r_cervello = 550;
 
-  // --- PARAMETRI DELLA RETE ---
-  let isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+  // Griglia per la modalità chiara
+  const p_griglia = [];
+  const spazio = 40;
+  const tot_livelli = 16;
+  let fatti = 0;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
-  camera.position.z = 1000;
-
-  const renderer = new THREE.WebGLRenderer({ canvas: container, antialias: true, alpha: true }); // alpha true supporta il cambio live di background
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  function updateRendererClearColor() {
-    // Keep the canvas transparent so the CSS cyber-grid behind it is visible,
-    // and particles/lines blend properly with the CSS background.
-    renderer.setClearColor(0x000000, 0);
-  }
-  updateRendererClearColor();
-
-  const numNodes = 700;
-  const connectionRadius = 150;
-  const brainRadius = 550;
-
-  // --- TRIANGLE/PYRAMID POSITIONS PER LA LIGHT MODE ---
-  const gridPool = [];
-  const spacing = 40; // Triangolo più compatto
-  const totalLayers = 16; // Stima dei layer necessari per ~700 nodi in un tetraedro
-  let pointsGenerated = 0;
-  
-  // Costruiamo un tetraedro (piramide a base triangolare) strato per strato dall'alto al basso
-  for (let L = 0; L < totalLayers && pointsGenerated < numNodes; L++) {
-    const yPos = (totalLayers / 2 - L) * (spacing * 0.9); 
-    
+  for (let L = 0; L < tot_livelli && fatti < tot_nodi; L++) {
+    const yP = (tot_livelli / 2 - L) * (spazio * 0.9);
     for (let x = 0; x <= L; x++) {
       for (let z = 0; z <= L - x; z++) {
-        if (pointsGenerated >= numNodes) break;
-        
-        // Asse Baricentrico per distribuire il triangolo dal centro
-        const offsetX = (x - L / 3.0) * spacing * 1.1;
-        const offsetZ = (z - L / 3.0) * spacing * 1.1;
-        
-        gridPool.push({
-          x: offsetX,
-          y: yPos,
-          z: offsetZ
-        });
-        pointsGenerated++;
+        if (fatti >= tot_nodi) break;
+        const offX = (x - L / 3.0) * spazio * 1.1;
+        const offZ = (z - L / 3.0) * spazio * 1.1;
+        p_griglia.push({ x: offX, y: yP, z: offZ });
+        fatti++;
       }
     }
   }
-  
-  // Scorta di sicurezza: spargiamo alla base eventuali nodi rimasti fuori dai layer per chiudere il numero 700
-  while(pointsGenerated < numNodes) {
-     gridPool.push({
-        x: (Math.random() - 0.5) * spacing * totalLayers * 0.5,
-        y: (-totalLayers / 2) * (spacing * 0.9),
-        z: (Math.random() - 0.5) * spacing * totalLayers * 0.5
-     });
-     pointsGenerated++;
+
+  while (fatti < tot_nodi) {
+    p_griglia.push({
+      x: (Math.random() - 0.5) * spazio * tot_livelli * 0.5,
+      y: (-tot_livelli / 2) * (spazio * 0.9),
+      z: (Math.random() - 0.5) * spazio * tot_livelli * 0.5
+    });
+    fatti++;
   }
 
-  // Shuffle della griglia per far rimescolare i nodi in modo incrociato ed organico quando si muovono
-  for (let i = gridPool.length - 1; i > 0; i--) {
+  for (let i = p_griglia.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [gridPool[i], gridPool[j]] = [gridPool[j], gridPool[i]];
+    [p_griglia[i], p_griglia[j]] = [p_griglia[j], p_griglia[i]];
   }
 
-  // --- 1. NODI DELLA RETE ---
-  const geometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(numNodes * 3);
-  const targetPositions = new Float32Array(numNodes * 3);
-  const colors = new Float32Array(numNodes * 3);
-  const vColor = new THREE.Color();
+  const g_nodi = new THREE.BufferGeometry();
+  const pos = new Float32Array(tot_nodi * 3);
+  const pos_target = new Float32Array(tot_nodi * 3);
+  const col = new Float32Array(tot_nodi * 3);
+  const v_col = new THREE.Color();
 
-  for (let i = 0; i < numNodes; i++) {
-    // Generazione organica a strati (emisferi + profondità)
-    const r = brainRadius * Math.cbrt(Math.random());
-    const theta = Math.random() * 2 * Math.PI;
-    const phi = Math.acos(2 * Math.random() - 1);
+  for (let i = 0; i < tot_nodi; i++) {
+    const r = r_cervello * Math.cbrt(Math.random());
+    const th = Math.random() * 2 * Math.PI;
+    const ph = Math.acos(2 * Math.random() - 1);
+    const x = r * Math.sin(ph) * Math.cos(th);
+    const y = r * Math.sin(ph) * Math.sin(th) * 0.7;
+    const z = r * Math.cos(ph);
 
-    const x = r * Math.sin(phi) * Math.cos(theta); // Sfera sferica
-    const y = r * Math.sin(phi) * Math.sin(theta) * 0.7; // Leggermente schiacciata
-    const z = r * Math.cos(phi);
+    pos[i * 3] = x;
+    pos[i * 3 + 1] = y;
+    pos[i * 3 + 2] = z;
 
-    positions[i * 3] = x;
-    positions[i * 3 + 1] = y;
-    positions[i * 3 + 2] = z;
+    const h_dark = 0.55 + Math.random() * 0.1;
+    v_col.setHSL(h_dark, 1.0, 0.5);
+    col[i * 3] = v_col.r;
+    col[i * 3 + 1] = v_col.g;
+    col[i * 3 + 2] = v_col.b;
 
-    // Colori di base che gestiranno il mix live nei shader
-    // Creiamo un baseHue che serve per Dark Mode (rosso/arancio) e per Light Mode (giallo/oro)
-    const hueDark = Math.random() * 0.1; // Rosso/Arancio
-    const hueLight = 0.11 + Math.random() * 0.06; // Giallo/Oro
-
-    // Shader deciderà quale mixare
-    vColor.setHSL(hueDark, 1.0, 0.5);
-
-    colors[i * 3] = vColor.r;
-    colors[i * 3 + 1] = vColor.g;
-    colors[i * 3 + 2] = vColor.b;
-
-    // Assegnamo la destinazione in Griglia (Light Mode)
-    targetPositions[i * 3] = gridPool[i].x;
-    targetPositions[i * 3 + 1] = gridPool[i].y;
-    targetPositions[i * 3 + 2] = gridPool[i].z;
+    pos_target[i * 3] = p_griglia[i].x;
+    pos_target[i * 3 + 1] = p_griglia[i].y;
+    pos_target[i * 3 + 2] = p_griglia[i].z;
   }
 
-  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute("targetPosition", new THREE.BufferAttribute(targetPositions, 3));
-  geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3)); // Restored: crucial for vertex shader attribute!
+  g_nodi.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  g_nodi.setAttribute("targetPosition", new THREE.BufferAttribute(pos_target, 3));
+  g_nodi.setAttribute("color", new THREE.BufferAttribute(col, 3));
 
-  // Shader personalizzato per le particelle (Nodi)
-  const particlesMat = new THREE.ShaderMaterial({
+  const mat_part = new THREE.ShaderMaterial({
     uniforms: {
       time: { value: 0 },
-      isDarkTheme: { value: !isLightMode ? 1.0 : 0.0 },
-      themeTransition: { value: isLightMode ? 1.0 : 0.0 }
+      isDarkTheme: { value: !luce ? 1.0 : 0.0 },
+      themeTransition: { value: luce ? 1.0 : 0.0 }
     },
     vertexColors: true,
     vertexShader: `
@@ -642,17 +543,11 @@ function initProceduralCubesBackground() {
       varying vec3 vColorBase;
       uniform float time;
       uniform float themeTransition;
-      
       void main() {
-        vColorBase = color; // base is red/orange
-        
-        // Morphing da forma sferica a griglia
+        vColorBase = color;
         vec3 currentPos = mix(position, targetPosition, themeTransition);
-        
         vec4 mvPosition = modelViewMatrix * vec4(currentPos, 1.0);
-        // Pulsa dolcemente in base alla posizione nello spazio (ritmo asincrono)
         float pulse = sin(currentPos.x * 0.005 + time * 2.0) * 0.5 + 0.5;
-        // Dimensione base 4.0, ingrandimento pulse 4.0
         gl_PointSize = (4.0 + pulse * 4.0) * (1000.0 / -mvPosition.z);
         gl_Position = projectionMatrix * mvPosition;
       }
@@ -661,84 +556,63 @@ function initProceduralCubesBackground() {
       varying vec3 vColorBase;
       uniform float time;
       uniform float isDarkTheme;
-      
       void main() {
         vec2 xy = gl_PointCoord.xy - vec2(0.5);
         float ll = length(xy);
         if(ll > 0.5) discard;
-        // Colori azzurro/blu (#0ea5e9 light, #2563eb dark basis) per Light mode
         vec3 lightColorBase = vec3(0.055, 0.647, 0.914);
         vec3 cColor = mix(lightColorBase, vColorBase, isDarkTheme);
-        
-        // Luminosità
         vec3 col = mix(cColor * 1.5, cColor * 3.0, isDarkTheme);
         float glow = smoothstep(0.5, 0.0, ll); 
         float alpha = glow * mix(0.9, 1.0, isDarkTheme);
-        
-        // Premultiply alpha for WebGL canvas compositing
         gl_FragColor = vec4(col * alpha, alpha);
       }
     `,
     transparent: true,
     depthWrite: false,
-    blending: isLightMode ? THREE.NormalBlending : THREE.AdditiveBlending
+    blending: luce ? THREE.NormalBlending : THREE.AdditiveBlending
   });
 
-  const particleSystem = new THREE.Points(geometry, particlesMat);
-  scene.add(particleSystem);
+  const sist_part = new THREE.Points(g_nodi, mat_part);
+  scena.add(sist_part);
 
-  // --- 2. CONNESSIONI (Assoni/Siringhe dati) ---
-  const linePositions = [];
-  const lineTargetPositions = [];
-  const lineOpacities = [];
-  const lineDistances = []; // Per animazione dei dati in base alla distanza
+  const l_pos = [];
+  const l_pos_target = [];
+  const l_alfa = [];
+  const l_dist = [];
 
-  // Trova i vicini
-  for (let i = 0; i < numNodes; i++) {
-    let connections = 0;
-    for (let j = i + 1; j < numNodes; j++) {
-      const dx = positions[i * 3] - positions[j * 3];
-      const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
-      const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+  for (let i = 0; i < tot_nodi; i++) {
+    let connessioni = 0;
+    for (let j = i + 1; j < tot_nodi; j++) {
+      const dx = pos[i * 3] - pos[j * 3];
+      const dy = pos[i * 3 + 1] - pos[j * 3 + 1];
+      const dz = pos[i * 3 + 2] - pos[j * 3 + 2];
       const distSq = dx * dx + dy * dy + dz * dz;
 
-      // Crea la linea solo se sono vicini (e non esagerare con le connessioni max 12 per nodo)
-      if (distSq < connectionRadius * connectionRadius && connections < 12) {
-        linePositions.push(
-          positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
-          positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
-        );
-        
-        lineTargetPositions.push(
-          targetPositions[i * 3], targetPositions[i * 3 + 1], targetPositions[i * 3 + 2],
-          targetPositions[j * 3], targetPositions[j * 3 + 1], targetPositions[j * 3 + 2]
-        );
-
-        // L"opacità statica in base a quanto sono vicini i nodi (più vicini = più forte)
-        const alpha = 1.0 - (Math.sqrt(distSq) / connectionRadius);
-        lineOpacities.push(alpha, alpha);
-
-        // Distanza dal centro (per generare onde procedurali basate sulle vere distanze fisiche)
-        const dCenter1 = Math.sqrt(positions[i * 3] ** 2 + positions[i * 3 + 1] ** 2 + positions[i * 3 + 2] ** 2);
-        const dCenter2 = Math.sqrt(positions[j * 3] ** 2 + positions[j * 3 + 1] ** 2 + positions[j * 3 + 2] ** 2);
-        lineDistances.push(dCenter1, dCenter2);
-
-        connections++;
+      if (distSq < r_conn * r_conn && connessioni < 12) {
+        l_pos.push(pos[i * 3], pos[i * 3 + 1], pos[i * 3 + 2], pos[j * 3], pos[j * 3 + 1], pos[j * 3 + 2]);
+        l_pos_target.push(pos_target[i * 3], pos_target[i * 3 + 1], pos_target[i * 3 + 2], pos_target[j * 3], pos_target[j * 3 + 1], pos_target[j * 3 + 2]);
+        const alpha = 1.0 - (Math.sqrt(distSq) / r_conn);
+        l_alfa.push(alpha, alpha);
+        const d_centro1 = Math.sqrt(pos[i * 3] ** 2 + pos[i * 3 + 1] ** 2 + pos[i * 3 + 2] ** 2);
+        const d_centro2 = Math.sqrt(pos[j * 3] ** 2 + pos[j * 3 + 1] ** 2 + pos[j * 3 + 2] ** 2);
+        l_dist.push(d_centro1, d_centro2);
+        connessioni++;
       }
     }
   }
 
-  const linesGeom = new THREE.BufferGeometry();
-  linesGeom.setAttribute("position", new THREE.Float32BufferAttribute(linePositions, 3));
-  linesGeom.setAttribute("targetPosition", new THREE.Float32BufferAttribute(lineTargetPositions, 3));
-  linesGeom.setAttribute("alpha", new THREE.Float32BufferAttribute(lineOpacities, 1));
-  linesGeom.setAttribute("dCenter", new THREE.Float32BufferAttribute(lineDistances, 1));
+  const g_linee = new THREE.BufferGeometry();
+  g_linee.setAttribute("position", new THREE.Float32BufferAttribute(l_pos, 3));
+  g_linee.setAttribute("targetPosition", new THREE.Float32BufferAttribute(l_pos_target, 3));
+  g_linee.setAttribute("alpha", new THREE.Float32BufferAttribute(l_alfa, 1));
+  g_linee.setAttribute("dCenter", new THREE.Float32BufferAttribute(l_dist, 1));
 
-  const linesMat = new THREE.ShaderMaterial({
+  const mat_linee = new THREE.ShaderMaterial({
     uniforms: {
       time: { value: 0 },
-      isDarkTheme: { value: !isLightMode ? 1.0 : 0.0 },
-      themeTransition: { value: isLightMode ? 1.0 : 0.0 }
+      isDarkTheme: { value: !luce ? 1.0 : 0.0 },
+      themeTransition: { value: luce ? 1.0 : 0.0 }
     },
     vertexShader: `
       attribute vec3 targetPosition;
@@ -747,7 +621,6 @@ function initProceduralCubesBackground() {
       varying float vAlpha;
       varying float vDist;
       uniform float themeTransition;
-      
       void main() {
         vAlpha = alpha;
         vDist = dCenter;
@@ -760,131 +633,82 @@ function initProceduralCubesBackground() {
       uniform float isDarkTheme;
       varying float vAlpha;
       varying float vDist;
-      
       void main() {
         float wave = sin(vDist * 0.015 - time * 3.0);
         float pulse = smoothstep(0.85, 1.0, wave);
-        // Light mode: azzurro (#0ea5e9) come base, impulsi blu (#2563eb)
-        // Dark mode: bright orange with glow
-        vec3 baseColor = mix(vec3(0.055, 0.647, 0.914), vec3(0.9, 0.2, 0.0), isDarkTheme);
-        vec3 pulseColor = mix(vec3(0.145, 0.388, 0.922), vec3(1.0, 0.5, 0.0), isDarkTheme);
-        
-        float finalAlpha = vAlpha * mix(0.7, 0.4, isDarkTheme); // Opacità calibrata
-        float finalPulse = finalAlpha + (pulse * vAlpha * mix(0.9, 1.0, isDarkTheme));
-        
-        vec3 colorFinal = mix(baseColor, pulseColor, pulse);
-        
-        // Premultiply alpha for correct canvas compositing
-        gl_FragColor = vec4(colorFinal * finalPulse, finalPulse);
+        vec3 baseColor = mix(vec3(0.055, 0.647, 0.914), vec3(0.145, 0.388, 0.922), isDarkTheme);
+        vec3 pulseColor = mix(vec3(0.145, 0.388, 0.922), vec3(0.055, 0.647, 0.914), isDarkTheme);
+        float alpha_finale = vAlpha * mix(0.7, 0.4, isDarkTheme);
+        float pulse_finale = alpha_finale + (pulse * vAlpha * mix(0.9, 1.0, isDarkTheme));
+        vec3 col_finale = mix(baseColor, pulseColor, pulse);
+        gl_FragColor = vec4(col_finale * pulse_finale, pulse_finale);
       }
     `,
     transparent: true,
     depthWrite: false,
-    blending: isLightMode ? THREE.NormalBlending : THREE.AdditiveBlending
+    blending: luce ? THREE.NormalBlending : THREE.AdditiveBlending
   });
-  const linesSystem = new THREE.LineSegments(linesGeom, linesMat);
-  scene.add(linesSystem);
+  const sist_linee = new THREE.LineSegments(g_linee, mat_linee);
+  scena.add(sist_linee);
 
-  // --- 3. ANIMAZIONE E REATTIVITA ---
-  let mouseX = 0;
-  let mouseY = 0;
-  let targetX = 0;
-  let targetY = 0;
-
-  const mouseMoveHandler = (e) => {
-    // Offset da centro schermo, molto lieve per non disorientare
+  let mouseX = 0, mouseY = 0, tX = 0, tY = 0;
+  const r_mouse = (e) => {
     mouseX = (e.clientX - window.innerWidth / 2) * 0.1;
     mouseY = (e.clientY - window.innerHeight / 2) * 0.1;
   };
-  document.addEventListener("mousemove", mouseMoveHandler);
+  document.addEventListener("mousemove", r_mouse);
 
-  const resizeHandler = () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+  const r_ridimensiona = () => {
+    cam.aspect = window.innerWidth / window.innerHeight;
+    cam.updateProjectionMatrix();
+    rend.setSize(window.innerWidth, window.innerHeight);
   };
-  window.addEventListener("resize", resizeHandler);
+  window.addEventListener("resize", r_ridimensiona);
 
-  // Reattività al tasto Dark/Light Mode nativo LIVE (Senza buttare giù il context)
-  const themeObserver = new MutationObserver(() => {
-    isLightMode = document.documentElement.getAttribute("data-theme") === "light";
-    const isDarkFloat = !isLightMode ? 1.0 : 0.0;
-    particlesMat.uniforms.isDarkTheme.value = isDarkFloat;
-    linesMat.uniforms.isDarkTheme.value = isDarkFloat;
-
-    // Switch blending mode (Normal per far vedere su bianco, Additive per glow su nero)
-    particlesMat.blending = isLightMode ? THREE.NormalBlending : THREE.AdditiveBlending;
-    linesMat.blending = isLightMode ? THREE.NormalBlending : THREE.AdditiveBlending;
-    particlesMat.needsUpdate = true;
-    linesMat.needsUpdate = true;
-
-    updateRendererClearColor();
+  const oss_tema = new MutationObserver(() => {
+    luce = document.documentElement.getAttribute("data-theme") === "light";
+    const dVal = !luce ? 1.0 : 0.0;
+    mat_part.uniforms.isDarkTheme.value = dVal;
+    mat_linee.uniforms.isDarkTheme.value = dVal;
+    mat_part.blending = luce ? THREE.NormalBlending : THREE.AdditiveBlending;
+    mat_linee.blending = luce ? THREE.NormalBlending : THREE.AdditiveBlending;
+    colore_pulizia();
   });
-  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  oss_tema.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
-  let time = 0;
-  let baseRotationY = scene.rotation.y;
-  let isVisible = true; // Forziamo a true, abbandonando l'IntersectionObserver per stabilità assoluta.
+  let tempo = 0;
+  let rotBaseY = scena.rotation.y;
 
-  // Costruiamo e salviamo lo stato prima di annegare in animate()
-  _nnState = {
-    rafId: null,
-    renderer,
-    scene,
-    geometry,
-    linesGeom,
-    particlesMat,
-    linesMat,
-    themeObserver,
-    resizeHandler,
-    mouseMoveHandler
+  stato_sfondo = {
+    r_id: null,
+    b_rend: rend,
+    b_scena: scena,
+    g_geom: g_nodi,
+    g_linee: g_linee,
+    m_part: mat_part,
+    m_linee: mat_linee,
+    oss_tema,
+    r_ridimensiona,
+    r_mouse
   };
 
-  function animate() {
-    _nnState.rafId = requestAnimationFrame(animate);
-
-    // Forza sempre il render (Niente return su isVisible)
-    time += 0.01;
-    particlesMat.uniforms.time.value = time;
-    linesMat.uniforms.time.value = time;
-
-    // Morph animation logic
-    const targetTransition = isLightMode ? 1.0 : 0.0;
-    particlesMat.uniforms.themeTransition.value += (targetTransition - particlesMat.uniforms.themeTransition.value) * 0.05;
-    linesMat.uniforms.themeTransition.value = particlesMat.uniforms.themeTransition.value;
-
-    // Parallax damping
-    targetX = mouseX;
-    targetY = mouseY;
-
-    // Rotation mapping for both X (up/down) and Y (left/right) based on mouse
-    baseRotationY += 0.0008;
-    scene.rotation.y += ((baseRotationY + targetX * 0.01) - scene.rotation.y) * 0.05;
-    scene.rotation.x += (targetY * 0.01 - scene.rotation.x) * 0.05;
-
-    // Tilt the brain slightly up so it looks majestic
-    scene.rotation.z = -0.1;
-
-    renderer.render(scene, camera);
+  function muovi() {
+    stato_sfondo.r_id = requestAnimationFrame(muovi);
+    tempo += 0.01;
+    mat_part.uniforms.time.value = tempo;
+    mat_linee.uniforms.time.value = tempo;
+    const transTarget = luce ? 1.0 : 0.0;
+    mat_part.uniforms.themeTransition.value += (transTarget - mat_part.uniforms.themeTransition.value) * 0.05;
+    mat_linee.uniforms.themeTransition.value = mat_part.uniforms.themeTransition.value;
+    tX = mouseX;
+    tY = mouseY;
+    rotBaseY += 0.0008;
+    scena.rotation.y += ((rotBaseY + tX * 0.01) - scena.rotation.y) * 0.05;
+    scena.rotation.x += (tY * 0.01 - scena.rotation.x) * 0.05;
+    scena.rotation.z = -0.1;
+    rend.render(scena, cam);
   }
-
-  animate();
+  muovi();
 }
 
-// ===== DYNAMIC PROJECT LOADING (Example) =====
-// Projects section now shows a CTA card instead
-// No need for loadProjects function anymore
-
-// ===== EXPORT FUNCTIONS FOR TESTING =====
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = {
-    setTheme,
-    setLanguage,
-  };
-}
-
-console.log(
-  "%c© Alessio Alaimo | Data Analyst%c\nSystem Ready.",
-  "color: #4ade80; font-size: 20px; font-weight: bold;",
-  "color: #ededed; font-size: 12px;"
-);
+console.log("Sito caricato correttamente!");
