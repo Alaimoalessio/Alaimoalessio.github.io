@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <link href="style.css?v=87" rel="stylesheet" />
+  <link href="style.css?v=89" rel="stylesheet" />
 </head>
 
 <body>
@@ -179,18 +179,18 @@
       </div>
 
       <div class="projects-oled-grid">
-        <a href="https://github.com/Alaimoalessio/ai_agency_core" target="_blank" class="project-oled-card reveal">
+        <a href="https://github.com/Alaimoalessio/domus" target="_blank" class="project-oled-card reveal" style="transition-delay: 0ms;">
           <div class="project-oled-content">
-            <h3 class="project-oled-title">AI Content System</h3>
+            <h3 class="project-oled-title">Domus — Password Manager Zero-Knowledge</h3>
             <p class="project-oled-desc"
-              data-en="Event-driven system for AI content generation. Asynchronous FastAPI bridge linking cloud orchestrator (n8n) with local GPU, validated by Claude Vision."
-              data-it="Bridge asincrono FastAPI tra orchestratore cloud (n8n) e GPU locale. Pipeline di generazione immagini con validation automatica tramite Claude Vision.">
-              Bridge asincrono FastAPI tra orchestratore cloud (n8n) e GPU locale. Pipeline di generazione immagini con
-              validation automatica tramite Claude Vision.</p>
+              data-en="Self-hosted vault where the server only stores ciphertext: client-side Argon2id + HKDF + AES-256-GCM, JWTs with security stamp, rotating refresh tokens with reuse detection, anti user-enumeration defenses."
+              data-it="Vault self-hosted dove il server conserva solo ciphertext: Argon2id + HKDF + AES-256-GCM lato client, JWT con security stamp, refresh token rotanti con reuse detection, difesa anti user-enumeration.">
+              Vault self-hosted dove il server conserva solo ciphertext: Argon2id + HKDF + AES-256-GCM lato client, JWT con security stamp, refresh token rotanti con reuse detection, difesa anti user-enumeration.</p>
             <div class="project-oled-tags">
               <span>FastAPI</span>
-              <span>n8n</span>
-              <span>Claude Vision</span>
+              <span>Crittografia</span>
+              <span>PostgreSQL</span>
+              <span>Caddy</span>
             </div>
           </div>
           <div class="project-oled-link">
@@ -200,9 +200,95 @@
           </div>
         </a>
 
+        <a href="https://github.com/Alaimoalessio/isual-analytics" target="_blank" class="project-oled-card reveal" style="transition-delay: 100ms;">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">ISUAL Analytics</h3>
+            <p class="project-oled-desc"
+              data-en="KPI reporting platform built during my internship: SQL pipeline over multi-brand social data, interactive dashboard and PDF reports guaranteed to match, plus a handover document for the team."
+              data-it="Piattaforma di KPI reporting sviluppata in tirocinio: pipeline SQL dai dati social multi-brand, dashboard interattiva e report PDF con gli stessi numeri garantiti, più documento di handover per il team.">
+              Piattaforma di KPI reporting sviluppata in tirocinio: pipeline SQL dai dati social multi-brand, dashboard interattiva e report PDF con gli stessi numeri garantiti, più documento di handover per il team.</p>
+            <div class="project-oled-tags">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>Pandas</span>
+              <span>Flask</span>
+            </div>
+          </div>
+          <div class="project-oled-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
 
+        <a href="https://github.com/Alaimoalessio/tars" target="_blank" class="project-oled-card reveal" style="transition-delay: 200ms;">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">TARS — Assistente AI locale</h3>
+            <p class="project-oled-desc"
+              data-en="Personal assistant running entirely on Ollama: no data leaves the machine. Orchestrator with persistent SQLite memory, skill router (e.g. Gmail agent), FastAPI layer and React interface."
+              data-it="Assistente personale che gira interamente su Ollama: nessun dato lascia la macchina. Orchestratore con memoria persistente su SQLite, router di skill (es. agente Gmail), API FastAPI e interfaccia React.">
+              Assistente personale che gira interamente su Ollama: nessun dato lascia la macchina. Orchestratore con memoria persistente su SQLite, router di skill (es. agente Gmail), API FastAPI e interfaccia React.</p>
+            <div class="project-oled-tags">
+              <span>Ollama</span>
+              <span>FastAPI</span>
+              <span>SQLite</span>
+              <span>React</span>
+            </div>
+          </div>
+          <div class="project-oled-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
 
-        <a href="https://github.com/Alaimoalessio" target="_blank" class="project-oled-card github-oled-link reveal" style="transition-delay: 300ms;">
+        <a href="https://github.com/Alaimoalessio/fintek-wind-analyzer" target="_blank" class="project-oled-card reveal" style="transition-delay: 300ms;">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">Fintek Airos — Wind Analyzer</h3>
+            <p class="project-oled-desc"
+              data-en="Commissioned tool: given a town, it geocodes it, collects historical wind data, computes yearly averages and generates the Excel report used for system sizing. Docker deployment on Render."
+              data-it="Tool commissionato: dato un comune, geocodifica, raccoglie i dati di vento storici, calcola le medie annuali e genera il report Excel per il dimensionamento degli impianti. Deploy in Docker su Render.">
+              Tool commissionato: dato un comune, geocodifica, raccoglie i dati di vento storici, calcola le medie annuali e genera il report Excel per il dimensionamento degli impianti. Deploy in Docker su Render.</p>
+            <div class="project-oled-tags">
+              <span>Flask</span>
+              <span>Scraping</span>
+              <span>openpyxl</span>
+              <span>Docker</span>
+            </div>
+          </div>
+          <div class="project-oled-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+
+        <div class="project-oled-card project-oled-card-live reveal" style="transition-delay: 400ms;">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">Villa Manin — Menu Digitale</h3>
+            <p class="project-oled-desc"
+              data-en="Digital menu built for a real bar-restaurant, opened via QR code at the table: mobile-first Next.js app with sticky category navigation and scroll-spy, dish cards with allergen and diet badges, animated detail sheet and a QR generator for print."
+              data-it="Menu digitale realizzato per un bar-ristorante, aperto da QR code al tavolo: app Next.js mobile-first con navigazione categorie sticky e scroll-spy, card piatti con badge allergeni e diete, scheda di dettaglio animata e generatore di QR per la stampa.">
+              Menu digitale realizzato per un bar-ristorante, aperto da QR code al tavolo: app Next.js mobile-first con navigazione categorie sticky e scroll-spy, card piatti con badge allergeni e diete, scheda di dettaglio animata e generatore di QR per la stampa.</p>
+            <div class="project-oled-tags">
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>Tailwind</span>
+              <span>Framer Motion</span>
+            </div>
+          </div>
+          <div class="project-oled-actions">
+            <a href="https://villa-manin-menu.vercel.app" target="_blank" rel="noopener" class="project-live-link">
+              <span data-en="View live site" data-it="Vedi il sito">Vedi il sito</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M8 7h9v9" />
+              </svg>
+            </a>
+            <a href="https://github.com/Alaimoalessio/villa_manin_menu" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
+          </div>
+        </div>
+
+        <a href="https://github.com/Alaimoalessio" target="_blank" class="project-oled-card github-oled-link reveal" style="transition-delay: 500ms;">
           <div class="project-oled-content">
             <h3 class="project-oled-title">Altro su GitHub</h3>
             <p class="project-oled-desc">Vai sul mio profilo github per vedere tutti i miei lavori e script strani.</p>
@@ -316,6 +402,6 @@
   <!-- Script di Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <!-- Il mio script -->
-  <script src="script.js?v=87"></script>
+  <script src="script.js?v=89"></script>
 </body>
 </html>

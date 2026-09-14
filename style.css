@@ -744,6 +744,39 @@ section { padding: var(--spacing-xl) 0; }
 
 .project-oled-link { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; margin-left: 2rem; }
 
+/* Card con sito online: link al sito + link al codice */
+.project-oled-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem; margin-left: 2rem; flex-shrink: 0; }
+
+.project-live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.project-live-link svg { width: 16px; height: 16px; }
+
+.project-live-link:hover { box-shadow: var(--accent-glow); transform: translateY(-2px); }
+
+.project-code-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.project-code-link:hover { color: var(--text-primary); border-bottom-color: var(--accent-secondary); }
+
 /* GitHub link speciale */
 .github-oled-link {
   background: transparent;
@@ -879,6 +912,7 @@ section { padding: var(--spacing-xl) 0; }
   .hero-title { font-size: 2rem; }
   .project-oled-card { flex-direction: column; align-items: flex-start; }
   .project-oled-link { margin-left: 0; margin-top: var(--spacing-sm); align-self: flex-end; }
+  .project-oled-actions { margin-left: 0; margin-top: var(--spacing-sm); flex-direction: row; align-items: center; gap: 1rem; }
   .contact-layout { grid-template-columns: 1fr; }
 }
 
