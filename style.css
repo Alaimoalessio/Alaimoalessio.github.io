@@ -777,6 +777,76 @@ section { padding: var(--spacing-xl) 0; }
 
 .project-code-link:hover { color: var(--text-primary); border-bottom-color: var(--accent-secondary); }
 
+/* Anteprima del sito nelle card con demo online */
+.project-oled-media {
+  flex: 0 0 300px;
+  width: 300px;
+  aspect-ratio: 16 / 10;
+  margin-right: var(--spacing-md);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0b0f16;
+  display: block;
+}
+
+.project-oled-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.project-oled-card:hover .project-oled-media img { transform: scale(1.03); }
+
+[data-theme="light"] .project-oled-media { border-color: rgba(0, 0, 0, 0.1); background: #e9e7e2; }
+
+/* Sezione per le aziende */
+.services { padding: 6rem 0; background: transparent; }
+
+.services-lead { color: var(--text-secondary); max-width: 720px; margin: -0.5rem 0 var(--spacing-lg); font-size: 1.05rem; line-height: 1.6; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+@media (min-width: 1200px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 640px) { .services-grid { grid-template-columns: 1fr; } }
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.2); }
+
+.service-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-secondary); letter-spacing: 0.08em; }
+
+.service-title { font-size: 1.25rem; font-weight: 600; line-height: 1.25; }
+
+.service-desc { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.55; flex: 1; }
+
+.service-example { font-size: 0.8rem; color: var(--text-secondary); border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.7rem; margin-top: 0.3rem; }
+
+.services-cta { margin-top: var(--spacing-lg); color: var(--text-secondary); font-size: 1.05rem; }
+.services-cta a { color: var(--text-primary); margin-left: 0.4rem; text-decoration: underline; text-decoration-color: var(--accent-secondary); text-underline-offset: 4px; }
+
+[data-theme="light"] .service-card { background: rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 0, 0, 0.08); }
+[data-theme="light"] .service-card:hover { background: rgba(0, 0, 0, 0.07); border-color: rgba(14, 165, 233, 0.4); }
+[data-theme="light"] .service-example { border-top-color: rgba(0, 0, 0, 0.1); }
+
 /* GitHub link speciale */
 .github-oled-link {
   background: transparent;
@@ -913,6 +983,8 @@ section { padding: var(--spacing-xl) 0; }
   .project-oled-card { flex-direction: column; align-items: flex-start; }
   .project-oled-link { margin-left: 0; margin-top: var(--spacing-sm); align-self: flex-end; }
   .project-oled-actions { margin-left: 0; margin-top: var(--spacing-sm); flex-direction: row; align-items: center; gap: 1rem; }
+  .project-oled-media { flex-basis: auto; width: 100%; margin: 0 0 var(--spacing-sm); }
+  .services { padding: 2.5rem 0; }
   .contact-layout { grid-template-columns: 1fr; }
 }
 
