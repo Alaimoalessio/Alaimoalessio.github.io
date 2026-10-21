@@ -244,7 +244,7 @@
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="26" height="24" rx="3"/><path d="M8 22v-5M16 22V10M24 22v-9"/></svg></span>
           <span class="category-heading"><span data-it="Dashboard e strumenti" data-en="Dashboards & tools">Dashboard e strumenti</span><span class="category-chevron" aria-hidden="true">⌄</span></span>
           <span class="category-description" data-it="Meno passaggi, più chiarezza" data-en="Fewer steps, a clearer picture">Meno passaggi, più chiarezza</span>
-          <span class="category-count" data-it="4 progetti" data-en="4 projects">4 progetti</span>
+          <span class="category-count" data-it="5 progetti" data-en="5 projects">5 progetti</span>
         </button>
         <button type="button" class="project-category" data-project-filter="ai" aria-expanded="false" aria-controls="project-results">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="16" height="16" rx="4"/><path d="M12 3v5M20 3v5M12 24v5M20 24v5M3 12h5M3 20h5M24 12h5M24 20h5M13 13h6v6h-6z"/></svg></span>
@@ -256,6 +256,27 @@
       <p class="project-filter-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
       <div class="projects-oled-grid" id="project-results">
+        <div data-project-category="tools" class="project-oled-card project-oled-card-live reveal">
+          <a href="https://a-vista-cantiere.vercel.app" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
+            <img src="img/projects/a-vista.jpg" alt="A Vista: panoramica di Casa Rovere con avanzamento del cantiere e scelta del parquet" loading="lazy" width="960" height="600" />
+          </a>
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">A Vista — Portale clienti per ristrutturazioni</h3>
+            <p class="project-oled-desc"
+              data-en="Follow a renovation in one place: progress, photos, documents and materials to approve. Switch between client and contractor in an interactive demo: choices, updates and messages appear in both views, with an interactive floor plan and a construction-to-concept comparison."
+              data-it="Una ristrutturazione da seguire in un unico spazio: avanzamento, foto, documenti e materiali da approvare. Passa da cliente a impresa in una demo interattiva: scelte, aggiornamenti e messaggi compaiono in entrambe le viste, con planimetria navigabile e confronto cantiere/concept.">
+              Una ristrutturazione da seguire in un unico spazio: avanzamento, foto, documenti e materiali da approvare. Passa da cliente a impresa in una demo interattiva: scelte, aggiornamenti e messaggi compaiono in entrambe le viste, con planimetria navigabile e confronto cantiere/concept.</p>
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary>
+              <div class="project-oled-tags"><span>JavaScript</span><span>SVG</span><span>LocalStorage</span><span>Vercel</span></div>
+            </details>
+          </div>
+          <div class="project-oled-actions">
+            <a href="https://a-vista-cantiere.vercel.app" target="_blank" rel="noopener" class="project-live-link">
+              <span data-it="Esplora la demo" data-en="Explore the demo">Esplora la demo</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9" /></svg>
+            </a>
+          </div>
+        </div>
         <div data-project-category="web" class="project-oled-card project-oled-card-live reveal">
           <a href="https://selvatica-esperienze.vercel.app" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
             <img src="img/projects/selvatica.jpg" alt="Selvatica: sito di esperienze in cantina con presentazione e calice sul vigneto" loading="lazy" width="960" height="600" />
