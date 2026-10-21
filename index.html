@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <link href="style.css?v=94" rel="stylesheet" />
+  <link href="style.css?v=95" rel="stylesheet" />
 </head>
 
 <body>
@@ -232,20 +232,29 @@
     <div class="container">
       <div class="minimal-header">
         <span class="minimal-bar"></span>
-        <h2 class="minimal-title" data-en="Featured Projects" data-it="Progetti in Evidenza">Progetti in Evidenza</h2>
+        <h2 class="minimal-title" data-en="See what I can build for your business" data-it="Guarda cosa posso costruire per la tua attività">Guarda cosa posso costruire per la tua attività</h2>
       </div>
 
-      <div class="projects-oled-grid">
-        <div class="project-oled-card project-oled-card-live reveal" style="transition-delay: 0ms;">
+      <p class="projects-intro" data-it="Scegli ciò che ti interessa ed esplora i lavori: dai siti web agli strumenti su misura per la tua attività." data-en="Choose what interests you and explore the work, from websites to tools tailored to your business.">Scegli ciò che ti interessa ed esplora i lavori: dai siti web agli strumenti su misura per la tua attività.</p>
+      <div class="project-filters" role="group" aria-label="Filtra i progetti / Filter projects" hidden>
+        <button type="button" class="project-filter" data-project-filter="all" aria-pressed="true" aria-controls="project-results projects-technical"><span data-it="Tutti" data-en="All">Tutti</span></button>
+        <button type="button" class="project-filter" data-project-filter="web" aria-pressed="false" aria-controls="project-results projects-technical"><span data-it="Siti web" data-en="Websites">Siti web</span></button>
+        <button type="button" class="project-filter" data-project-filter="tools" aria-pressed="false" aria-controls="project-results projects-technical"><span data-it="Dashboard e strumenti" data-en="Dashboards & tools">Dashboard e strumenti</span></button>
+        <button type="button" class="project-filter" data-project-filter="ai" aria-pressed="false" aria-controls="project-results projects-technical"><span data-it="AI e automazioni" data-en="AI & automation">AI e automazioni</span></button>
+      </div>
+      <p class="project-filter-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+      <div class="projects-oled-grid" id="project-results">
+        <div data-project-category="tools" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 0ms;">
           <a href="https://configuratore-serramenti.vercel.app" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
             <img src="img/projects/configuratore.jpg" alt="Configuratore 3D di serramenti: portafinestra in alluminio antracite nel modello 3D con il pannello di configurazione" loading="lazy" width="960" height="600" />
           </a>
           <div class="project-oled-content">
             <h3 class="project-oled-title">Configuratore 3D Serramenti</h3>
             <p class="project-oled-desc"
-              data-en="Window and French-door configurator with a real-time 3D model: sizes, material, colour, glass, opening and accessories, with an instant quote, PDF export and a lead form. Procedural geometry, no external 3D assets."
-              data-it="Configuratore di finestre e portefinestre con modello 3D in tempo reale: misure, materiale, colore, vetro, apertura e accessori, con preventivo immediato, PDF e richiesta di contatto. Geometria procedurale, nessun modello 3D esterno.">
-              Configuratore di finestre e portefinestre con modello 3D in tempo reale: misure, materiale, colore, vetro, apertura e accessori, con preventivo immediato, PDF e richiesta di contatto. Geometria procedurale, nessun modello 3D esterno.</p>
+              data-en="Customers choose sizes, materials and accessories, see their window in 3D and get an instant quote. They can download a PDF and send you an enquiry."
+              data-it="Il cliente sceglie misure, materiali e accessori, vede il serramento in 3D e ottiene subito un preventivo. Può scaricare il PDF e inviarti una richiesta di contatto.">
+              Il cliente sceglie misure, materiali e accessori, vede il serramento in 3D e ottiene subito un preventivo. Può scaricare il PDF e inviarti una richiesta di contatto.</p>
             <div class="project-oled-tags">
               <span>Next.js</span>
               <span>React Three Fiber</span>
@@ -264,16 +273,16 @@
           </div>
         </div>
 
-        <div class="project-oled-card project-oled-card-live reveal" style="transition-delay: 100ms;">
+        <div data-project-category="tools" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 100ms;">
           <a href="https://quanto-resta.vercel.app" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
             <img src="img/projects/quanto-resta.jpg" alt="Quanto resta: cruscotto con leve, verdetto e curva della cassa mese per mese" loading="lazy" width="960" height="600" />
           </a>
           <div class="project-oled-content">
             <h3 class="project-oled-title">Quanto resta — Simulatore "cosa succede se"</h3>
             <p class="project-oled-desc"
-              data-en="Scenario simulator for small businesses: pick your business, move the levers (raise prices, hire someone, open one more day, buy equipment) and watch cash, margin and break-even change month by month, with a plain-language verdict, shareable link and PDF report. Hand-written SVG charts."
-              data-it="Simulatore di scenari per piccole attività: scegli il tipo di impresa, muovi le leve (alzo i prezzi, assumo, apro un giorno in più, compro un macchinario) e vedi cassa, margine e punto di pareggio cambiare mese per mese, con un verdetto in italiano, link condivisibile e PDF. Grafici SVG scritti a mano.">
-              Simulatore di scenari per piccole attività: scegli il tipo di impresa, muovi le leve (alzo i prezzi, assumo, apro un giorno in più, compro un macchinario) e vedi cassa, margine e punto di pareggio cambiare mese per mese, con un verdetto in italiano, link condivisibile e PDF. Grafici SVG scritti a mano.</p>
+              data-en="What happens if you raise prices, hire someone or buy equipment? Try different scenarios and see how cash and margins change month by month, with a clear summary and PDF report."
+              data-it="Cosa succede se alzi i prezzi, assumi o compri un macchinario? Prova le alternative e osserva come cambiano cassa e margini mese per mese, con un riepilogo chiaro e un report PDF.">
+              Cosa succede se alzi i prezzi, assumi o compri un macchinario? Prova le alternative e osserva come cambiano cassa e margini mese per mese, con un riepilogo chiaro e un report PDF.</p>
             <div class="project-oled-tags">
               <span>Next.js</span>
               <span>TypeScript</span>
@@ -292,6 +301,170 @@
           </div>
         </div>
 
+        <div data-project-category="tools" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 300ms;">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">ISUAL Analytics</h3>
+            <p class="project-oled-desc"
+              data-en="Social results for multiple brands in one dashboard, with PDF reports ready to share. Built during my internship and adopted in production by the company. Protected demo: ask me for access."
+              data-it="Risultati social di più brand in una sola dashboard, con report PDF pronti da condividere. Sviluppata durante il mio tirocinio e adottata in produzione dall’azienda. Demo protetta: chiedimi l’accesso.">
+              Risultati social di più brand in una sola dashboard, con report PDF pronti da condividere. Sviluppata durante il mio tirocinio e adottata in produzione dall’azienda. Demo protetta: chiedimi l’accesso.</p>
+            <div class="project-oled-tags">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>Pandas</span>
+              <span>Flask</span>
+            </div>
+          </div>
+          <div class="project-oled-actions">
+            <a href="https://isual-analytics.onrender.com" target="_blank" rel="noopener" class="project-live-link">
+              <span data-en="Live demo (login)" data-it="Demo live (login)">Demo live (login)</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M8 7h9v9" />
+              </svg>
+            </a>
+            <a href="https://github.com/Alaimoalessio/isual-analytics" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
+          </div>
+        </div>
+
+        <a href="https://github.com/Alaimoalessio/tars" target="_blank" data-project-category="ai" class="project-oled-card reveal" style="transition-delay: 400ms;">
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">TARS — Assistente AI locale</h3>
+            <p class="project-oled-desc"
+              data-en="An AI assistant with memory that connects tools and everyday tasks, running on your computer. A dedicated interface and extensible integrations, with local AI processing."
+              data-it="Un assistente AI con memoria che collega strumenti e attività quotidiane, eseguito sul tuo computer. Interfaccia dedicata e integrazioni estendibili, con elaborazione AI locale.">
+              Un assistente AI con memoria che collega strumenti e attività quotidiane, eseguito sul tuo computer. Interfaccia dedicata e integrazioni estendibili, con elaborazione AI locale.</p>
+            <div class="project-oled-tags">
+              <span>Ollama</span>
+              <span>FastAPI</span>
+              <span>SQLite</span>
+              <span>React</span>
+            </div>
+          </div>
+          <div class="project-oled-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+
+        <div data-project-category="tools" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 500ms;">
+          <a href="https://fintek-wind-analyzer.onrender.com" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
+            <img src="img/projects/fintek.jpg" alt="Fintek Wind Analyzer: form per generare il report Excel del vento di un comune" loading="lazy" width="960" height="600" />
+          </a>
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">Fintek Airos — Wind Analyzer</h3>
+            <p class="project-oled-desc"
+              data-en="From a town to an Excel wind report: historical data collection, yearly averages and a final document in one tool. Commissioned to support system sizing."
+              data-it="Da un comune a un report Excel sul vento: ricerca dei dati storici, medie annuali e documento finale in un unico strumento. Realizzato su commissione per supportare il dimensionamento degli impianti.">
+              Da un comune a un report Excel sul vento: ricerca dei dati storici, medie annuali e documento finale in un unico strumento. Realizzato su commissione per supportare il dimensionamento degli impianti.</p>
+            <div class="project-oled-tags">
+              <span>Flask</span>
+              <span>Scraping</span>
+              <span>openpyxl</span>
+              <span>Docker</span>
+            </div>
+          </div>
+          <div class="project-oled-actions">
+            <a href="https://fintek-wind-analyzer.onrender.com" target="_blank" rel="noopener" class="project-live-link">
+              <span data-en="View live site" data-it="Vedi il sito">Vedi il sito</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M8 7h9v9" />
+              </svg>
+            </a>
+            <a href="https://github.com/Alaimoalessio/fintek-wind-analyzer" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
+          </div>
+        </div>
+
+        <div data-project-category="web" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 600ms;">
+          <a href="https://villa-manin-menu.vercel.app" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
+            <img src="img/projects/villa-manin.jpg" alt="Menu digitale Villa Manin su smartphone: sezioni Bar & Drinks e Ristorante" loading="lazy" width="960" height="600" />
+          </a>
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">Villa Manin — Menu Digitale</h3>
+            <p class="project-oled-desc"
+              data-en="The restaurant menu on any smartphone: open it with a QR code at the table and browse categories, dish details, allergens and dietary information. Built for a bar and restaurant."
+              data-it="Il menu del ristorante sempre a portata di smartphone: si apre con un QR al tavolo, con categorie, dettagli dei piatti e indicazioni su allergeni e diete. Realizzato per un bar-ristorante.">
+              Il menu del ristorante sempre a portata di smartphone: si apre con un QR al tavolo, con categorie, dettagli dei piatti e indicazioni su allergeni e diete. Realizzato per un bar-ristorante.</p>
+            <div class="project-oled-tags">
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>Tailwind</span>
+              <span>Framer Motion</span>
+            </div>
+          </div>
+          <div class="project-oled-actions">
+            <a href="https://villa-manin-menu.vercel.app" target="_blank" rel="noopener" class="project-live-link">
+              <span data-en="View live site" data-it="Vedi il sito">Vedi il sito</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M8 7h9v9" />
+              </svg>
+            </a>
+            <a href="https://github.com/Alaimoalessio/villa_manin_menu" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
+          </div>
+        </div>
+
+        <div data-project-category="web" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 700ms;">
+          <a href="https://daognicapodelmondo.vercel.app" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
+            <img src="img/projects/da-ogni-capo-del-mondo.jpg" alt="Homepage del museo digitale Da ogni capo del mondo" loading="lazy" width="960" height="600" />
+          </a>
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">Da ogni capo del mondo — Museo Digitale</h3>
+            <p class="project-oled-desc"
+              data-en="A collection to explore through eras, materials and an interactive globe. Educational paths, multilingual content and a private area to manage museum objects."
+              data-it="Una collezione da esplorare attraverso epoche, materiali e un globo interattivo. Percorsi didattici, contenuti multilingua e un’area privata per gestire gli oggetti del museo.">
+              Una collezione da esplorare attraverso epoche, materiali e un globo interattivo. Percorsi didattici, contenuti multilingua e un’area privata per gestire gli oggetti del museo.</p>
+            <div class="project-oled-tags">
+              <span>Flask</span>
+              <span>SQLAlchemy</span>
+              <span>Multilingua</span>
+              <span>Museo digitale</span>
+            </div>
+          </div>
+          <div class="project-oled-actions">
+            <a href="https://daognicapodelmondo.vercel.app" target="_blank" rel="noopener" class="project-live-link">
+              <span data-en="Visit the museum" data-it="Visita il museo">Visita il museo</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M8 7h9v9" />
+              </svg>
+            </a>
+            <a href="https://github.com/Alaimoalessio/DaOgniCapoDelMondo" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
+          </div>
+        </div>
+
+        <div data-project-category="web" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 800ms;">
+          <a href="https://alaimoalessio.github.io/agrinode/" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
+            <img src="img/projects/agrinode.jpg" alt="Landing page AGRINODE: hero con anteprima della dashboard" loading="lazy" width="960" height="600" />
+          </a>
+          <div class="project-oled-content">
+            <h3 class="project-oled-title">AGRINODE — Landing Page Agritech</h3>
+            <p class="project-oled-desc"
+              data-en="A website presenting an agritech startup: from its predictive AI solution to a dashboard preview, services and pricing. A journey that helps visitors discover the product."
+              data-it="Un sito per presentare una startup agritech: dalla soluzione di AI predittiva all’anteprima della dashboard, fino a servizi e prezzi. Un percorso che accompagna il visitatore alla scoperta del prodotto.">
+              Un sito per presentare una startup agritech: dalla soluzione di AI predittiva all’anteprima della dashboard, fino a servizi e prezzi. Un percorso che accompagna il visitatore alla scoperta del prodotto.</p>
+            <div class="project-oled-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Landing page</span>
+            </div>
+          </div>
+          <div class="project-oled-actions">
+            <a href="https://alaimoalessio.github.io/agrinode/" target="_blank" rel="noopener" class="project-live-link">
+              <span data-en="View live site" data-it="Vedi il sito">Vedi il sito</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M8 7h9v9" />
+              </svg>
+            </a>
+            <a href="https://github.com/Alaimoalessio/agrinode" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="projects-technical" id="projects-technical">
+        <h3 class="projects-technical-title" data-it="Dietro le quinte: progetti tecnici" data-en="Behind the scenes: technical projects">Dietro le quinte: progetti tecnici</h3>
+        <p class="projects-intro" data-it="Sicurezza, backend e altri lavori per chi vuole approfondire come costruisco i prodotti." data-en="Security, backend and more work for a closer look at how I build products.">Sicurezza, backend e altri lavori per chi vuole approfondire come costruisco i prodotti.</p>
+        <div class="projects-oled-grid">
         <a href="https://github.com/Alaimoalessio/domus" target="_blank" class="project-oled-card reveal" style="transition-delay: 200ms;">
           <div class="project-oled-content">
             <h3 class="project-oled-title">Domus — Password Manager Zero-Knowledge</h3>
@@ -313,164 +486,6 @@
           </div>
         </a>
 
-        <div class="project-oled-card project-oled-card-live reveal" style="transition-delay: 300ms;">
-          <div class="project-oled-content">
-            <h3 class="project-oled-title">ISUAL Analytics</h3>
-            <p class="project-oled-desc"
-              data-en="KPI reporting platform built during my internship and now in production at the company: SQL pipeline over multi-brand social data, interactive dashboard and PDF reports guaranteed to match, plus a handover document for the team. Live demo is password-protected: ask me for access."
-              data-it="Piattaforma di KPI reporting sviluppata in tirocinio e oggi in produzione in azienda: pipeline SQL dai dati social multi-brand, dashboard interattiva e report PDF con gli stessi numeri garantiti, più documento di handover per il team. La demo è protetta da password: chiedimi l'accesso.">
-              Piattaforma di KPI reporting sviluppata in tirocinio e oggi in produzione in azienda: pipeline SQL dai dati social multi-brand, dashboard interattiva e report PDF con gli stessi numeri garantiti, più documento di handover per il team. La demo è protetta da password: chiedimi l'accesso.</p>
-            <div class="project-oled-tags">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>Pandas</span>
-              <span>Flask</span>
-            </div>
-          </div>
-          <div class="project-oled-actions">
-            <a href="https://isual-analytics.onrender.com" target="_blank" rel="noopener" class="project-live-link">
-              <span data-en="Live demo (login)" data-it="Demo live (login)">Demo live (login)</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17L17 7M8 7h9v9" />
-              </svg>
-            </a>
-            <a href="https://github.com/Alaimoalessio/isual-analytics" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
-          </div>
-        </div>
-
-        <a href="https://github.com/Alaimoalessio/tars" target="_blank" class="project-oled-card reveal" style="transition-delay: 400ms;">
-          <div class="project-oled-content">
-            <h3 class="project-oled-title">TARS — Assistente AI locale</h3>
-            <p class="project-oled-desc"
-              data-en="Personal assistant running entirely on Ollama: no data leaves the machine. Orchestrator with persistent SQLite memory, skill router (e.g. Gmail agent), FastAPI layer and React interface."
-              data-it="Assistente personale che gira interamente su Ollama: nessun dato lascia la macchina. Orchestratore con memoria persistente su SQLite, router di skill (es. agente Gmail), API FastAPI e interfaccia React.">
-              Assistente personale che gira interamente su Ollama: nessun dato lascia la macchina. Orchestratore con memoria persistente su SQLite, router di skill (es. agente Gmail), API FastAPI e interfaccia React.</p>
-            <div class="project-oled-tags">
-              <span>Ollama</span>
-              <span>FastAPI</span>
-              <span>SQLite</span>
-              <span>React</span>
-            </div>
-          </div>
-          <div class="project-oled-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </div>
-        </a>
-
-        <div class="project-oled-card project-oled-card-live reveal" style="transition-delay: 500ms;">
-          <a href="https://fintek-wind-analyzer.onrender.com" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
-            <img src="img/projects/fintek.jpg" alt="Fintek Wind Analyzer: form per generare il report Excel del vento di un comune" loading="lazy" width="960" height="600" />
-          </a>
-          <div class="project-oled-content">
-            <h3 class="project-oled-title">Fintek Airos — Wind Analyzer</h3>
-            <p class="project-oled-desc"
-              data-en="Commissioned tool: given a town, it geocodes it, collects historical wind data, computes yearly averages and generates the Excel report used for system sizing. Docker deployment on Render."
-              data-it="Tool commissionato: dato un comune, geocodifica, raccoglie i dati di vento storici, calcola le medie annuali e genera il report Excel per il dimensionamento degli impianti. Deploy in Docker su Render.">
-              Tool commissionato: dato un comune, geocodifica, raccoglie i dati di vento storici, calcola le medie annuali e genera il report Excel per il dimensionamento degli impianti. Deploy in Docker su Render.</p>
-            <div class="project-oled-tags">
-              <span>Flask</span>
-              <span>Scraping</span>
-              <span>openpyxl</span>
-              <span>Docker</span>
-            </div>
-          </div>
-          <div class="project-oled-actions">
-            <a href="https://fintek-wind-analyzer.onrender.com" target="_blank" rel="noopener" class="project-live-link">
-              <span data-en="View live site" data-it="Vedi il sito">Vedi il sito</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17L17 7M8 7h9v9" />
-              </svg>
-            </a>
-            <a href="https://github.com/Alaimoalessio/fintek-wind-analyzer" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
-          </div>
-        </div>
-
-        <div class="project-oled-card project-oled-card-live reveal" style="transition-delay: 600ms;">
-          <a href="https://villa-manin-menu.vercel.app" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
-            <img src="img/projects/villa-manin.jpg" alt="Menu digitale Villa Manin su smartphone: sezioni Bar & Drinks e Ristorante" loading="lazy" width="960" height="600" />
-          </a>
-          <div class="project-oled-content">
-            <h3 class="project-oled-title">Villa Manin — Menu Digitale</h3>
-            <p class="project-oled-desc"
-              data-en="Digital menu built for a real bar-restaurant, opened via QR code at the table: mobile-first Next.js app with sticky category navigation and scroll-spy, dish cards with allergen and diet badges, animated detail sheet and a QR generator for print."
-              data-it="Menu digitale realizzato per un bar-ristorante, aperto da QR code al tavolo: app Next.js mobile-first con navigazione categorie sticky e scroll-spy, card piatti con badge allergeni e diete, scheda di dettaglio animata e generatore di QR per la stampa.">
-              Menu digitale realizzato per un bar-ristorante, aperto da QR code al tavolo: app Next.js mobile-first con navigazione categorie sticky e scroll-spy, card piatti con badge allergeni e diete, scheda di dettaglio animata e generatore di QR per la stampa.</p>
-            <div class="project-oled-tags">
-              <span>Next.js</span>
-              <span>TypeScript</span>
-              <span>Tailwind</span>
-              <span>Framer Motion</span>
-            </div>
-          </div>
-          <div class="project-oled-actions">
-            <a href="https://villa-manin-menu.vercel.app" target="_blank" rel="noopener" class="project-live-link">
-              <span data-en="View live site" data-it="Vedi il sito">Vedi il sito</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17L17 7M8 7h9v9" />
-              </svg>
-            </a>
-            <a href="https://github.com/Alaimoalessio/villa_manin_menu" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
-          </div>
-        </div>
-
-        <div class="project-oled-card project-oled-card-live reveal" style="transition-delay: 700ms;">
-          <a href="https://daognicapodelmondo.vercel.app" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
-            <img src="img/projects/da-ogni-capo-del-mondo.jpg" alt="Homepage del museo digitale Da ogni capo del mondo" loading="lazy" width="960" height="600" />
-          </a>
-          <div class="project-oled-content">
-            <h3 class="project-oled-title">Da ogni capo del mondo — Museo Digitale</h3>
-            <p class="project-oled-desc"
-              data-en="A digital museum for exploring a collection of historical and cultural objects through search, eras, materials, educational paths and an interactive globe. A multilingual Flask platform with a private collection management area."
-              data-it="Museo digitale per esplorare una collezione di oggetti storici e culturali attraverso ricerca, epoche, materiali, percorsi didattici e un globo interattivo. Piattaforma Flask multilingua con area privata per gestire la collezione.">
-              Museo digitale per esplorare una collezione di oggetti storici e culturali attraverso ricerca, epoche, materiali, percorsi didattici e un globo interattivo. Piattaforma Flask multilingua con area privata per gestire la collezione.</p>
-            <div class="project-oled-tags">
-              <span>Flask</span>
-              <span>SQLAlchemy</span>
-              <span>Multilingua</span>
-              <span>Museo digitale</span>
-            </div>
-          </div>
-          <div class="project-oled-actions">
-            <a href="https://daognicapodelmondo.vercel.app" target="_blank" rel="noopener" class="project-live-link">
-              <span data-en="Visit the museum" data-it="Visita il museo">Visita il museo</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17L17 7M8 7h9v9" />
-              </svg>
-            </a>
-            <a href="https://github.com/Alaimoalessio/DaOgniCapoDelMondo" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
-          </div>
-        </div>
-
-        <div class="project-oled-card project-oled-card-live reveal" style="transition-delay: 800ms;">
-          <a href="https://alaimoalessio.github.io/agrinode/" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
-            <img src="img/projects/agrinode.jpg" alt="Landing page AGRINODE: hero con anteprima della dashboard" loading="lazy" width="960" height="600" />
-          </a>
-          <div class="project-oled-content">
-            <h3 class="project-oled-title">AGRINODE — Landing Page Agritech</h3>
-            <p class="project-oled-desc"
-              data-en="Landing page for a predictive-AI agritech startup: animated hero, problem/solution sections, dashboard preview with charts, testimonials and pricing. Plain HTML, CSS and JavaScript, no framework and no build step."
-              data-it="Landing page per una startup agritech di AI predittiva: hero animato, sezioni problema/soluzione, anteprima dashboard con grafici, testimonianze e listino prezzi. HTML, CSS e JavaScript puri, senza framework né build.">
-              Landing page per una startup agritech di AI predittiva: hero animato, sezioni problema/soluzione, anteprima dashboard con grafici, testimonianze e listino prezzi. HTML, CSS e JavaScript puri, senza framework né build.</p>
-            <div class="project-oled-tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>Landing page</span>
-            </div>
-          </div>
-          <div class="project-oled-actions">
-            <a href="https://alaimoalessio.github.io/agrinode/" target="_blank" rel="noopener" class="project-live-link">
-              <span data-en="View live site" data-it="Vedi il sito">Vedi il sito</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17L17 7M8 7h9v9" />
-              </svg>
-            </a>
-            <a href="https://github.com/Alaimoalessio/agrinode" target="_blank" rel="noopener" class="project-code-link" data-en="Source code" data-it="Codice sorgente">Codice sorgente</a>
-          </div>
-        </div>
-
         <a href="https://github.com/Alaimoalessio" target="_blank" class="project-oled-card github-oled-link reveal" style="transition-delay: 900ms;">
           <div class="project-oled-content">
             <h3 class="project-oled-title">Altro su GitHub</h3>
@@ -482,6 +497,7 @@
             </svg>
           </div>
         </a>
+      </div>
       </div>
     </div>
   </section>
@@ -585,6 +601,6 @@
   <!-- Script di Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <!-- Il mio script -->
-  <script src="script.js?v=94"></script>
+  <script src="script.js?v=95"></script>
 </body>
 </html>

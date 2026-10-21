@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
   barra_sopra();
   bottone_torna_su();
   animazioni_scorrimento();
+  filtra_progetti();
   scroll_morbido();
   saluto_mano();
   scritta_che_appare();
@@ -277,6 +278,45 @@ function cambia_lingua(l) {
   });
 
   aggiorna_saluto();
+  aggiorna_risultati_progetti();
+}
+
+function aggiorna_risultati_progetti() {
+  const status = document.querySelector('.project-filter-status');
+  if (!status) return;
+  const cards = Array.from(document.querySelectorAll('[data-project-category]'));
+  const count = cards.filter(card => !card.hidden).length;
+  const technical = document.getElementById('projects-technical');
+  const total = count + (technical && !technical.hidden ? 1 : 0);
+  status.textContent = lingua === 'en'
+    ? `${total} ${total === 1 ? 'project' : 'projects'}`
+    : `${total} ${total === 1 ? 'progetto' : 'progetti'}`;
+}
+
+function filtra_progetti() {
+  const filters = document.querySelector('.project-filters');
+  if (!filters) return;
+  const buttons = filters.querySelectorAll('[data-project-filter]');
+  const cards = document.querySelectorAll('[data-project-category]');
+  const technical = document.getElementById('projects-technical');
+  filters.hidden = false;
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.projectFilter;
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      cards.forEach(card => {
+        card.hidden = category !== 'all' && card.dataset.projectCategory !== category;
+        if (!card.hidden) {
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+          card.style.transitionDelay = '0ms';
+        }
+      });
+      if (technical) technical.hidden = category !== 'all';
+      aggiorna_risultati_progetti();
+    });
+  });
+  aggiorna_risultati_progetti();
 }
 
 // Funzioni per cambiare tema (chiaro/scuro)
