@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <link href="style.css?v=95" rel="stylesheet" />
+  <link href="style.css?v=96" rel="stylesheet" />
 </head>
 
 <body>
@@ -92,11 +92,8 @@
                 <span class="cursor">|</span>
               </span>
             </h1>
-            <p class="hero-description"
-              data-en="Building the backend infrastructure of digital products. Specializing in Data Engineering (Python, SQL, Linux) and advanced AI model integration."
-              data-it="Costruisco l'infrastruttura backend dei prodotti digitali. Unisco la solidità del Data Engineering (Python, SQL, Linux) all'integrazione di sistemi AI avanzati.">
-              Costruisco l'infrastruttura backend dei prodotti digitali. Unisco la solidità del Data Engineering
-              (Python, SQL, Linux) all'integrazione di sistemi AI avanzati.</p>
+            <p class="hero-description" data-it="Creo siti, strumenti e assistenti AI per la tua attività. Dal primo progetto a un prodotto che puoi usare ogni giorno." data-en="I build websites, tools and AI assistants for your business. From the first idea to a product you can use every day.">Creo siti, strumenti e assistenti AI per la tua attività. Dal primo progetto a un prodotto che puoi usare ogni giorno.</p>
+            <a href="#projects" class="project-live-link hero-project-cta" data-it="Esplora i miei lavori" data-en="Explore my work">Esplora i miei lavori</a>
           </div>
 
           <div class="hero-image">
@@ -183,7 +180,7 @@
         data-it="Senza paroloni: queste sono le cose che costruisco per negozi, ristoranti, artigiani e piccole aziende. Per ognuna c'è un esempio funzionante qui sotto.">
         Senza paroloni: queste sono le cose che costruisco per negozi, ristoranti, artigiani e piccole aziende. Per ognuna c'è un esempio funzionante qui sotto.</p>
       <div class="services-grid">
-        <a href="#projects" class="service-card reveal">
+        <a href="#projects" data-open-category="tools" class="service-card reveal">
           <span class="service-num">01</span>
           <h3 class="service-title" data-en="Quotes that make themselves" data-it="Preventivi che si fanno da soli">Preventivi che si fanno da soli</h3>
           <p class="service-desc"
@@ -192,7 +189,7 @@
             Configuratori e listini online: il cliente sceglie, il prezzo si aggiorna in tempo reale, il PDF gli arriva da solo. Le tue serate tornano tue.</p>
           <span class="service-example" data-en="Example: 3D window configurator" data-it="Esempio: configuratore 3D serramenti">Esempio: configuratore 3D serramenti</span>
         </a>
-        <a href="#projects" class="service-card reveal" style="transition-delay: 100ms;">
+        <a href="#projects" data-open-category="tools" class="service-card reveal" style="transition-delay: 100ms;">
           <span class="service-num">02</span>
           <h3 class="service-title" data-en="Your numbers on one screen" data-it="I tuoi numeri in una schermata">I tuoi numeri in una schermata</h3>
           <p class="service-desc"
@@ -201,7 +198,7 @@
             Cruscotti costruiti da quello che hai già — fatture, cassa, pagine social: cosa rende, chi paga in ritardo, dove va la cassa, cosa succede se cambi qualcosa.</p>
           <span class="service-example" data-en="Examples: Quanto resta, ISUAL Analytics" data-it="Esempi: Quanto resta, ISUAL Analytics">Esempi: Quanto resta, ISUAL Analytics</span>
         </a>
-        <a href="#projects" class="service-card reveal" style="transition-delay: 200ms;">
+        <a href="#projects" data-open-category="ai" class="service-card reveal" style="transition-delay: 200ms;">
           <span class="service-num">03</span>
           <h3 class="service-title" data-en="Less work done by hand" data-it="Meno lavoro fatto a mano">Meno lavoro fatto a mano</h3>
           <p class="service-desc"
@@ -210,7 +207,7 @@
             Automazioni con l'AI dove serve davvero: risposte, documenti, report e promemoria che partono da soli, collegati agli strumenti che usi già.</p>
           <span class="service-example" data-en="Example: TARS, local AI assistant" data-it="Esempio: TARS, assistente AI locale">Esempio: TARS, assistente AI locale</span>
         </a>
-        <a href="#projects" class="service-card reveal" style="transition-delay: 300ms;">
+        <a href="#projects" data-open-category="web" class="service-card reveal" style="transition-delay: 300ms;">
           <span class="service-num">04</span>
           <h3 class="service-title" data-en="A website that brings customers" data-it="Un sito che porta clienti">Un sito che porta clienti</h3>
           <p class="service-desc"
@@ -232,15 +229,29 @@
     <div class="container">
       <div class="minimal-header">
         <span class="minimal-bar"></span>
-        <h2 class="minimal-title" data-en="See what I can build for your business" data-it="Guarda cosa posso costruire per la tua attività">Guarda cosa posso costruire per la tua attività</h2>
+        <h2 class="minimal-title" data-en="My work" data-it="I miei lavori">I miei lavori</h2>
       </div>
 
-      <p class="projects-intro" data-it="Scegli ciò che ti interessa ed esplora i lavori: dai siti web agli strumenti su misura per la tua attività." data-en="Choose what interests you and explore the work, from websites to tools tailored to your business.">Scegli ciò che ti interessa ed esplora i lavori: dai siti web agli strumenti su misura per la tua attività.</p>
-      <div class="project-filters" role="group" aria-label="Filtra i progetti / Filter projects" hidden>
-        <button type="button" class="project-filter" data-project-filter="all" aria-pressed="true" aria-controls="project-results projects-technical"><span data-it="Tutti" data-en="All">Tutti</span></button>
-        <button type="button" class="project-filter" data-project-filter="web" aria-pressed="false" aria-controls="project-results projects-technical"><span data-it="Siti web" data-en="Websites">Siti web</span></button>
-        <button type="button" class="project-filter" data-project-filter="tools" aria-pressed="false" aria-controls="project-results projects-technical"><span data-it="Dashboard e strumenti" data-en="Dashboards & tools">Dashboard e strumenti</span></button>
-        <button type="button" class="project-filter" data-project-filter="ai" aria-pressed="false" aria-controls="project-results projects-technical"><span data-it="AI e automazioni" data-en="AI & automation">AI e automazioni</span></button>
+      <p class="projects-intro" data-it="Tre modi per dare forma alla tua idea. Scegli una categoria e guarda i progetti." data-en="Three ways to bring your idea to life. Choose a category and explore the projects.">Tre modi per dare forma alla tua idea. Scegli una categoria e guarda i progetti.</p>
+      <div class="project-filters" role="group" aria-label="Categorie / Categories" hidden>
+        <button type="button" class="project-category" data-project-filter="web" aria-expanded="true" aria-controls="project-results">
+          <span class="category-preview"><img src="img/projects/villa-manin.jpg" alt="" width="960" height="600" loading="lazy" /></span>
+          <span class="category-heading"><span data-it="Siti web" data-en="Websites">Siti web</span><span class="category-chevron" aria-hidden="true">⌄</span></span>
+          <span class="category-description" data-it="La tua attività, da visitare" data-en="Your business, ready to explore">La tua attività, da visitare</span>
+          <span class="category-count" data-it="3 progetti" data-en="3 projects">3 progetti</span>
+        </button>
+        <button type="button" class="project-category" data-project-filter="tools" aria-expanded="false" aria-controls="project-results">
+          <span class="category-preview"><img src="img/projects/quanto-resta.jpg" alt="" width="960" height="600" loading="lazy" /></span>
+          <span class="category-heading"><span data-it="Dashboard e strumenti" data-en="Dashboards & tools">Dashboard e strumenti</span><span class="category-chevron" aria-hidden="true">⌄</span></span>
+          <span class="category-description" data-it="Meno passaggi, più chiarezza" data-en="Fewer steps, a clearer picture">Meno passaggi, più chiarezza</span>
+          <span class="category-count" data-it="4 progetti" data-en="4 projects">4 progetti</span>
+        </button>
+        <button type="button" class="project-category" data-project-filter="ai" aria-expanded="false" aria-controls="project-results">
+          <span class="category-preview"><span class="category-ai-art" aria-hidden="true"><span class="ai-orbit"></span><span class="ai-core">AI</span></span></span>
+          <span class="category-heading"><span data-it="AI e automazioni" data-en="AI & automation">AI e automazioni</span><span class="category-chevron" aria-hidden="true">⌄</span></span>
+          <span class="category-description" data-it="Un aiuto concreto, ogni giorno" data-en="Practical help, every day">Un aiuto concreto, ogni giorno</span>
+          <span class="category-count" data-it="1 progetto" data-en="1 project">1 progetto</span>
+        </button>
       </div>
       <p class="project-filter-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
@@ -255,12 +266,12 @@
               data-en="Customers choose sizes, materials and accessories, see their window in 3D and get an instant quote. They can download a PDF and send you an enquiry."
               data-it="Il cliente sceglie misure, materiali e accessori, vede il serramento in 3D e ottiene subito un preventivo. Può scaricare il PDF e inviarti una richiesta di contatto.">
               Il cliente sceglie misure, materiali e accessori, vede il serramento in 3D e ottiene subito un preventivo. Può scaricare il PDF e inviarti una richiesta di contatto.</p>
-            <div class="project-oled-tags">
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary><div class="project-oled-tags">
               <span>Next.js</span>
               <span>React Three Fiber</span>
               <span>TypeScript</span>
               <span>Zod</span>
-            </div>
+            </div></details>
           </div>
           <div class="project-oled-actions">
             <a href="https://configuratore-serramenti.vercel.app" target="_blank" rel="noopener" class="project-live-link">
@@ -283,12 +294,12 @@
               data-en="What happens if you raise prices, hire someone or buy equipment? Try different scenarios and see how cash and margins change month by month, with a clear summary and PDF report."
               data-it="Cosa succede se alzi i prezzi, assumi o compri un macchinario? Prova le alternative e osserva come cambiano cassa e margini mese per mese, con un riepilogo chiaro e un report PDF.">
               Cosa succede se alzi i prezzi, assumi o compri un macchinario? Prova le alternative e osserva come cambiano cassa e margini mese per mese, con un riepilogo chiaro e un report PDF.</p>
-            <div class="project-oled-tags">
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary><div class="project-oled-tags">
               <span>Next.js</span>
               <span>TypeScript</span>
               <span>D3</span>
               <span>Motore finanziario</span>
-            </div>
+            </div></details>
           </div>
           <div class="project-oled-actions">
             <a href="https://quanto-resta.vercel.app" target="_blank" rel="noopener" class="project-live-link">
@@ -302,18 +313,19 @@
         </div>
 
         <div data-project-category="tools" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 300ms;">
+          <span class="project-illustration chart-art" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
           <div class="project-oled-content">
             <h3 class="project-oled-title">ISUAL Analytics</h3>
             <p class="project-oled-desc"
               data-en="Social results for multiple brands in one dashboard, with PDF reports ready to share. Built during my internship and adopted in production by the company. Protected demo: ask me for access."
               data-it="Risultati social di più brand in una sola dashboard, con report PDF pronti da condividere. Sviluppata durante il mio tirocinio e adottata in produzione dall’azienda. Demo protetta: chiedimi l’accesso.">
               Risultati social di più brand in una sola dashboard, con report PDF pronti da condividere. Sviluppata durante il mio tirocinio e adottata in produzione dall’azienda. Demo protetta: chiedimi l’accesso.</p>
-            <div class="project-oled-tags">
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary><div class="project-oled-tags">
               <span>Python</span>
               <span>SQL</span>
               <span>Pandas</span>
               <span>Flask</span>
-            </div>
+            </div></details>
           </div>
           <div class="project-oled-actions">
             <a href="https://isual-analytics.onrender.com" target="_blank" rel="noopener" class="project-live-link">
@@ -326,26 +338,23 @@
           </div>
         </div>
 
-        <a href="https://github.com/Alaimoalessio/tars" target="_blank" data-project-category="ai" class="project-oled-card reveal" style="transition-delay: 400ms;">
+        <div data-project-category="ai" class="project-oled-card reveal" style="transition-delay: 400ms;">
+          <span class="project-illustration category-ai-art" aria-hidden="true"><span class="ai-orbit"></span><span class="ai-core">TARS</span></span>
           <div class="project-oled-content">
             <h3 class="project-oled-title">TARS — Assistente AI locale</h3>
             <p class="project-oled-desc"
               data-en="An AI assistant with memory that connects tools and everyday tasks, running on your computer. A dedicated interface and extensible integrations, with local AI processing."
               data-it="Un assistente AI con memoria che collega strumenti e attività quotidiane, eseguito sul tuo computer. Interfaccia dedicata e integrazioni estendibili, con elaborazione AI locale.">
               Un assistente AI con memoria che collega strumenti e attività quotidiane, eseguito sul tuo computer. Interfaccia dedicata e integrazioni estendibili, con elaborazione AI locale.</p>
-            <div class="project-oled-tags">
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary><div class="project-oled-tags">
               <span>Ollama</span>
               <span>FastAPI</span>
               <span>SQLite</span>
               <span>React</span>
-            </div>
+            </div></details>
           </div>
-          <div class="project-oled-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </div>
-        </a>
+          <div class="project-oled-actions"><a href="https://github.com/Alaimoalessio/tars" target="_blank" rel="noopener" class="project-live-link" data-it="Esplora il progetto" data-en="Explore the project">Esplora il progetto</a></div>
+        </div>
 
         <div data-project-category="tools" class="project-oled-card project-oled-card-live reveal" style="transition-delay: 500ms;">
           <a href="https://fintek-wind-analyzer.onrender.com" target="_blank" rel="noopener" class="project-oled-media" tabindex="-1" aria-hidden="true">
@@ -357,12 +366,12 @@
               data-en="From a town to an Excel wind report: historical data collection, yearly averages and a final document in one tool. Commissioned to support system sizing."
               data-it="Da un comune a un report Excel sul vento: ricerca dei dati storici, medie annuali e documento finale in un unico strumento. Realizzato su commissione per supportare il dimensionamento degli impianti.">
               Da un comune a un report Excel sul vento: ricerca dei dati storici, medie annuali e documento finale in un unico strumento. Realizzato su commissione per supportare il dimensionamento degli impianti.</p>
-            <div class="project-oled-tags">
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary><div class="project-oled-tags">
               <span>Flask</span>
               <span>Scraping</span>
               <span>openpyxl</span>
               <span>Docker</span>
-            </div>
+            </div></details>
           </div>
           <div class="project-oled-actions">
             <a href="https://fintek-wind-analyzer.onrender.com" target="_blank" rel="noopener" class="project-live-link">
@@ -385,12 +394,12 @@
               data-en="The restaurant menu on any smartphone: open it with a QR code at the table and browse categories, dish details, allergens and dietary information. Built for a bar and restaurant."
               data-it="Il menu del ristorante sempre a portata di smartphone: si apre con un QR al tavolo, con categorie, dettagli dei piatti e indicazioni su allergeni e diete. Realizzato per un bar-ristorante.">
               Il menu del ristorante sempre a portata di smartphone: si apre con un QR al tavolo, con categorie, dettagli dei piatti e indicazioni su allergeni e diete. Realizzato per un bar-ristorante.</p>
-            <div class="project-oled-tags">
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary><div class="project-oled-tags">
               <span>Next.js</span>
               <span>TypeScript</span>
               <span>Tailwind</span>
               <span>Framer Motion</span>
-            </div>
+            </div></details>
           </div>
           <div class="project-oled-actions">
             <a href="https://villa-manin-menu.vercel.app" target="_blank" rel="noopener" class="project-live-link">
@@ -413,12 +422,12 @@
               data-en="A collection to explore through eras, materials and an interactive globe. Educational paths, multilingual content and a private area to manage museum objects."
               data-it="Una collezione da esplorare attraverso epoche, materiali e un globo interattivo. Percorsi didattici, contenuti multilingua e un’area privata per gestire gli oggetti del museo.">
               Una collezione da esplorare attraverso epoche, materiali e un globo interattivo. Percorsi didattici, contenuti multilingua e un’area privata per gestire gli oggetti del museo.</p>
-            <div class="project-oled-tags">
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary><div class="project-oled-tags">
               <span>Flask</span>
               <span>SQLAlchemy</span>
               <span>Multilingua</span>
               <span>Museo digitale</span>
-            </div>
+            </div></details>
           </div>
           <div class="project-oled-actions">
             <a href="https://daognicapodelmondo.vercel.app" target="_blank" rel="noopener" class="project-live-link">
@@ -441,12 +450,12 @@
               data-en="A website presenting an agritech startup: from its predictive AI solution to a dashboard preview, services and pricing. A journey that helps visitors discover the product."
               data-it="Un sito per presentare una startup agritech: dalla soluzione di AI predittiva all’anteprima della dashboard, fino a servizi e prezzi. Un percorso che accompagna il visitatore alla scoperta del prodotto.">
               Un sito per presentare una startup agritech: dalla soluzione di AI predittiva all’anteprima della dashboard, fino a servizi e prezzi. Un percorso che accompagna il visitatore alla scoperta del prodotto.</p>
-            <div class="project-oled-tags">
+            <details class="project-tech"><summary data-it="Tecnologie" data-en="Technologies">Tecnologie</summary><div class="project-oled-tags">
               <span>HTML</span>
               <span>CSS</span>
               <span>JavaScript</span>
               <span>Landing page</span>
-            </div>
+            </div></details>
           </div>
           <div class="project-oled-actions">
             <a href="https://alaimoalessio.github.io/agrinode/" target="_blank" rel="noopener" class="project-live-link">
@@ -519,10 +528,7 @@
               <span class="contact-highlight" data-en="great." data-it="grande.">grande.</span>
             </h3>
             
-            <p class="contact-info-desc"
-              data-en="Reach out if you're looking for a methodical AI & Data Engineer who combines manufacturing precision with digital logic."
-              data-it="Contattami se cerchi un AI & Data Engineer metodico, che unisce la precisione manifatturiera alla logica digitale.">
-              Contattami se cerchi un AI & Data Engineer metodico, che unisce la precisione manifatturiera alla logica digitale.</p>
+            <p class="contact-info-desc" data-it="Hai un’idea o un’attività da semplificare? Raccontami cosa ti serve: troviamo insieme da dove partire." data-en="Have an idea or a task you want to simplify? Tell me what you need and we can work out where to start.">Hai un’idea o un’attività da semplificare? Raccontami cosa ti serve: troviamo insieme da dove partire.</p>
 
             <div class="contact-direct-email">
               <p class="contact-lbl">EMAIL DIRETTA</p>
@@ -544,7 +550,7 @@
               
               <div class="contact-form-inner">
                 <div class="form-group">
-                  <label for="name">Nome</label>
+                  <label for="name" data-it="Nome" data-en="Name">Nome</label>
                   <input id="name" name="name" placeholder="Inserisci il tuo nome" required="" type="text" />
                 </div>
                 <div class="form-group">
@@ -552,16 +558,12 @@
                   <input id="email" name="email" placeholder="tua@email.com" required="" type="email" />
                 </div>
                 <div class="form-group">
-                  <label for="subject">Oggetto</label>
-                  <input id="subject" name="subject" placeholder="Di cosa vuoi parlare?" required="" type="text" />
-                </div>
-                <div class="form-group">
-                  <label for="message">Messaggio</label>
+                  <label for="message" data-it="Messaggio" data-en="Message">Messaggio</label>
                   <textarea id="message" name="message" placeholder="Scrivi qui..." required="" rows="5"></textarea>
                 </div>
                 <!-- Bottone per inviare -->
                 <button class="btn btn-primary submit-btn" type="submit">
-                  <span>Invia Messaggio</span>
+                  <span data-it="Invia messaggio" data-en="Send message">Invia messaggio</span>
                   <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20">
                     <line x1="22" x2="11" y1="2" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -601,6 +603,6 @@
   <!-- Script di Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <!-- Il mio script -->
-  <script src="script.js?v=95"></script>
+  <script src="script.js?v=96"></script>
 </body>
 </html>

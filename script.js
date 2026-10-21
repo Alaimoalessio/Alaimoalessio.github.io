@@ -286,8 +286,7 @@ function aggiorna_risultati_progetti() {
   if (!status) return;
   const cards = Array.from(document.querySelectorAll('[data-project-category]'));
   const count = cards.filter(card => !card.hidden).length;
-  const technical = document.getElementById('projects-technical');
-  const total = count + (technical && !technical.hidden ? 1 : 0);
+  const total = count;
   status.textContent = lingua === 'en'
     ? `${total} ${total === 1 ? 'project' : 'projects'}`
     : `${total} ${total === 1 ? 'progetto' : 'progetti'}`;
@@ -296,27 +295,26 @@ function aggiorna_risultati_progetti() {
 function filtra_progetti() {
   const filters = document.querySelector('.project-filters');
   if (!filters) return;
-  const buttons = filters.querySelectorAll('[data-project-filter]');
+  const buttons = Array.from(filters.querySelectorAll('[data-project-filter]'));
   const cards = document.querySelectorAll('[data-project-category]');
-  const technical = document.getElementById('projects-technical');
-  filters.hidden = false;
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const category = button.dataset.projectFilter;
-      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-      cards.forEach(card => {
-        card.hidden = category !== 'all' && card.dataset.projectCategory !== category;
-        if (!card.hidden) {
-          card.style.opacity = '1';
-          card.style.transform = 'none';
-          card.style.transitionDelay = '0ms';
-        }
-      });
-      if (technical) technical.hidden = category !== 'all';
-      aggiorna_risultati_progetti();
+  function openCategory(category) {
+    buttons.forEach(button => button.setAttribute('aria-expanded', String(button.dataset.projectFilter === category)));
+    cards.forEach(card => {
+      card.hidden = card.dataset.projectCategory !== category;
+      if (!card.hidden) {
+        card.style.opacity = '1';
+        card.style.transform = 'none';
+        card.style.transitionDelay = '0ms';
+      }
     });
+    aggiorna_risultati_progetti();
+  }
+  filters.hidden = false;
+  buttons.forEach(button => button.addEventListener('click', () => openCategory(button.dataset.projectFilter)));
+  document.querySelectorAll('[data-open-category]').forEach(link => {
+    link.addEventListener('click', () => openCategory(link.dataset.openCategory));
   });
-  aggiorna_risultati_progetti();
+  openCategory('web');
 }
 
 // Funzioni per cambiare tema (chiaro/scuro)
@@ -410,7 +408,7 @@ function scroll_morbido() {
       e.preventDefault();
       const bersaglio = document.querySelector(h);
       if (bersaglio) {
-        const dist = bersaglio.offsetTop - 80;
+        const dist = bersaglio.getBoundingClientRect().top + window.scrollY - (document.getElementById('navbar').offsetHeight + 20);
         window.scrollTo({
           top: dist,
           behavior: "smooth",
